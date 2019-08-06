@@ -53012,6 +53012,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _GroupListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./GroupListItem */ "./resources/js/components/GroupListItem.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53034,6 +53035,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var GroupList =
 /*#__PURE__*/
 function (_Component) {
@@ -53046,6 +53048,12 @@ function (_Component) {
   }
 
   _createClass(GroupList, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var dispatch = this.props.dispatch;
+      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["GetGroupsOnPeriod"])('2019-09-01'));
+    }
+  }, {
     key: "render",
     value: function render() {
       var groups = this.props.groups;
@@ -53485,6 +53493,11 @@ var groupsReducer = function groupsReducer() {
 
   switch (action.type) {
     case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_GET_ON_PERIOD:
+      window.axios.get('/api/journal/teacher/30b8b233-3174-49a1-bc8f-b6ed34470d6b/date/2019-09-01').then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.error(error);
+      });
       var newState = state.all = defautGroupsStore.filter(function (group) {
         return getActualOnly(group, action.period);
       });
@@ -53770,8 +53783,8 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Workplace\college_service\college\resources\js\journal.js */"./resources/js/journal.js");
-module.exports = __webpack_require__(/*! D:\Workplace\college_service\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
+__webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\js\journal.js */"./resources/js/journal.js");
+module.exports = __webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
 
 
 /***/ })
