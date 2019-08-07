@@ -35,9 +35,11 @@ class Group {
   }
 
   getMinMaxCourceReplacer() {
-    const regEx = /(\{0|%№)(\+[0-9])?(\}|%)/;
+    const regEx = /(\{|%№)(\+?[0-9])?(\}|%)/;
     const found = this.formatedName.match(regEx);
-    const addition = found[2] ? Number(found[2].substring(1)) : 0;
+    const addition = found[2] 
+      ? Number(found[2].substring(found[2].indexOf('+')+1)) 
+      : 0;
     const calcedMaxCource = this.maxCource + addition;
     return { regEx, calcedMaxCource };
   }
