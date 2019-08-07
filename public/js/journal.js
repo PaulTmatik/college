@@ -52913,13 +52913,14 @@ module.exports = function(module) {
 /*!***********************************************!*\
   !*** ./resources/js/actions/groupsActions.js ***!
   \***********************************************/
-/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, reciveClassesByTeacher */
+/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveClassesByTeacher */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetGroupsOnPeriod", function() { return GetGroupsOnPeriod; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getGroupsByTeacher", function() { return getGroupsByTeacher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setGroupLesson", function() { return setGroupLesson; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveClassesByTeacher", function() { return reciveClassesByTeacher; });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./resources/js/actions/index.js");
 
@@ -52941,6 +52942,12 @@ var getGroupsByTeacher = function getGroupsByTeacher(tGuid) {
     });
   };
 };
+var setGroupLesson = function setGroupLesson(lesson) {
+  return {
+    type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_SET_LESSON,
+    lesson: lesson
+  };
+};
 var reciveClassesByTeacher = function reciveClassesByTeacher(tGuid, data) {
   return {
     type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_RECIVE_BY_TEACHER,
@@ -52957,7 +52964,7 @@ var reciveClassesByTeacher = function reciveClassesByTeacher(tGuid, data) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, reciveClassesByTeacher, getStudentsInGroup, ACTIONS_NAMES */
+/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveClassesByTeacher, getStudentsInGroup, ACTIONS_NAMES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52967,6 +52974,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GetGroupsOnPeriod", function() { return _groupsActions__WEBPACK_IMPORTED_MODULE_0__["GetGroupsOnPeriod"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getGroupsByTeacher", function() { return _groupsActions__WEBPACK_IMPORTED_MODULE_0__["getGroupsByTeacher"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setGroupLesson", function() { return _groupsActions__WEBPACK_IMPORTED_MODULE_0__["setGroupLesson"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reciveClassesByTeacher", function() { return _groupsActions__WEBPACK_IMPORTED_MODULE_0__["reciveClassesByTeacher"]; });
 
@@ -52979,6 +52988,7 @@ var ACTIONS_NAMES = {
   GROUPS_GET_ON_PERIOD: 'GROUPS_GET_ON_PERIOD',
   GROUPS_RECIVE_BY_TEACHER: 'GROUPS_RECIVE_BY_TEACHER',
   GROUPS_GET_BY_TEACHER: 'GROUPS_GET_BY_TEACHER',
+  GROUPS_SET_LESSON: 'GROUPS_SET_LESSON',
   STUDENTS_GET_IN_GROUP: 'STUDENTS_GET_IN_GROUP'
 };
 
@@ -53228,8 +53238,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
 /* harmony import */ var _GroupList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./GroupList */ "./resources/js/components/GroupList.js");
-/* harmony import */ var _PageJournalHome__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./PageJournalHome */ "./resources/js/components/PageJournalHome.js");
-/* harmony import */ var _PageJournalGroupDetail__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./PageJournalGroupDetail */ "./resources/js/components/PageJournalGroupDetail.js");
+/* harmony import */ var _LessonsList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LessonsList */ "./resources/js/components/LessonsList.js");
+/* harmony import */ var _PageJournalHome__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./PageJournalHome */ "./resources/js/components/PageJournalHome.js");
+/* harmony import */ var _PageJournalGroupDetail__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./PageJournalGroupDetail */ "./resources/js/components/PageJournalGroupDetail.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53247,6 +53258,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -53275,13 +53287,13 @@ function (_Component) {
         store: _store__WEBPACK_IMPORTED_MODULE_4__["default"]
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "journal_application"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GroupList__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GroupList__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LessonsList__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/",
-        component: _PageJournalHome__WEBPACK_IMPORTED_MODULE_6__["default"]
+        component: _PageJournalHome__WEBPACK_IMPORTED_MODULE_7__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/group/:guid",
-        component: _PageJournalGroupDetail__WEBPACK_IMPORTED_MODULE_7__["default"]
+        component: _PageJournalGroupDetail__WEBPACK_IMPORTED_MODULE_8__["default"]
       })));
     }
   }]);
@@ -53292,6 +53304,90 @@ function (_Component) {
 if (document.getElementById('application')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(JournalApplication, null)), document.getElementById('application'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/LessonsList.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/LessonsList.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var LessonsList =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(LessonsList, _Component);
+
+  function LessonsList() {
+    _classCallCheck(this, LessonsList);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(LessonsList).apply(this, arguments));
+  }
+
+  _createClass(LessonsList, [{
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      var groups = this.props.groups;
+      var selectedLesson = groups.selectedLesson ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, groups.selectedLesson.lesson_name) : null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, selectedLesson, groups.lessons.map(function (lesson) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: lesson.guid
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            return _this.onSetLesson(lesson);
+          }
+        }, lesson.lesson_name));
+      }));
+    }
+  }, {
+    key: "onSetLesson",
+    value: function onSetLesson(lessonGuid) {
+      var dispatch = this.props.dispatch;
+      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setGroupLesson"])(lessonGuid));
+    }
+  }]);
+
+  return LessonsList;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    groups: state.groups
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(LessonsList));
 
 /***/ }),
 
@@ -53549,7 +53645,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var defautGroupsStore = [new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("57f4b9fd-6222-4b2d-8328-2917681f608d", "%№+1%01", new Date(2016, 8, 1), new Date(2019, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("02b864fb-d116-4952-b74b-6852ee37d117", "%№%02", new Date(2015, 8, 1), new Date(2019, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("e5f7a7ee-7527-4393-93e6-5b2d36615052", "%№%01", new Date(2018, 8, 1), new Date(2022, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("b33f9dd9-a186-469f-96f9-93acca9d9f7c", "%№%11", new Date(2018, 8, 1), new Date(2022, 6, 1))];
 var baseState = {
-  selected: undefined,
+  selectedLesson: undefined,
   groups: [],
   lessons: []
 };
@@ -53565,6 +53661,11 @@ var groupsReducer = function groupsReducer() {
           return new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"](cl.guid, cl.class_name, new Date(cl.started_at), new Date(cl.ended_in));
         }),
         lessons: action.lessons
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_SET_LESSON:
+      return _objectSpread({}, state, {
+        selectedLesson: action.lesson
       });
 
     default:

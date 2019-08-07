@@ -1,4 +1,4 @@
-import {ACTIONS_NAMES} from '.';
+import { ACTIONS_NAMES } from '.';
 
 export const GetGroupsOnPeriod = period => {
   return {
@@ -12,6 +12,13 @@ export const getGroupsByTeacher = tGuid => {
     return window.axios.get(`/api/journal/teacher/${tGuid}/date/2019-09-01`) //30b8b233-3174-49a1-bc8f-b6ed34470d6b
       .then(response => response.data, error => console.error('Error', error))
       .then(data => dispatch(reciveClassesByTeacher(tGuid, data)));
+  }
+}
+
+export const setGroupLesson = lesson => {
+  return {
+    type: ACTIONS_NAMES.GROUPS_SET_LESSON,
+    lesson
   }
 }
 

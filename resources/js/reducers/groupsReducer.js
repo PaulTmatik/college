@@ -17,7 +17,7 @@ const defautGroupsStore = [
 ];
 
 const baseState = {
-  selected: undefined,
+  selectedLesson: undefined,
   groups: [],
   lessons: []
 }
@@ -36,6 +36,11 @@ const groupsReducer = (state = baseState, action) => {
         ),
         lessons: action.lessons
       };
+    case ACTIONS_NAMES.GROUPS_SET_LESSON:
+      return {
+        ...state,
+        selectedLesson: action.lesson
+      }
     default:
       return state;
   }
