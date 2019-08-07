@@ -53460,7 +53460,6 @@ function (_Component) {
           key: student.guid
         }, student.fullName);
       });
-      console.log(this.props);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "page journal__group_detail"
       }, studentsList);
@@ -53643,7 +53642,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-var defautGroupsStore = [new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("57f4b9fd-6222-4b2d-8328-2917681f608d", "%№+1%01", new Date(2016, 8, 1), new Date(2019, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("02b864fb-d116-4952-b74b-6852ee37d117", "%№%02", new Date(2015, 8, 1), new Date(2019, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("e5f7a7ee-7527-4393-93e6-5b2d36615052", "%№%01", new Date(2018, 8, 1), new Date(2022, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("b33f9dd9-a186-469f-96f9-93acca9d9f7c", "%№%11", new Date(2018, 8, 1), new Date(2022, 6, 1))];
 var baseState = {
   selectedLesson: undefined,
   groups: [],
@@ -53660,7 +53658,8 @@ var groupsReducer = function groupsReducer() {
         groups: action.classes.map(function (cl) {
           return new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"](cl.guid, cl.class_name, new Date(cl.started_at), new Date(cl.ended_in));
         }),
-        lessons: action.lessons
+        lessons: action.lessons,
+        selectedLesson: action.lessons.slice(0, 1)[0]
       });
 
     case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_SET_LESSON:
@@ -53672,10 +53671,6 @@ var groupsReducer = function groupsReducer() {
       return state;
   }
 };
-
-function getActualOnly(group, period) {
-  return group.endedIn.getTime() > period.end.getTime() && period.end.getTime() >= group.startedAt.getTime();
-}
 
 /* harmony default export */ __webpack_exports__["default"] = (groupsReducer);
 
@@ -53839,9 +53834,9 @@ function () {
   }, {
     key: "getMinMaxCourceReplacer",
     value: function getMinMaxCourceReplacer() {
-      var regEx = /(\{0|%№)(\+[0-9])?(\}|%)/;
+      var regEx = /(\{|%№)(\+?[0-9])?(\}|%)/;
       var found = this.formatedName.match(regEx);
-      var addition = found[2] ? Number(found[2].substring(1)) : 0;
+      var addition = found[2] ? Number(found[2].substring(found[2].indexOf('+') + 1)) : 0;
       var calcedMaxCource = this.maxCource + addition;
       return {
         regEx: regEx,

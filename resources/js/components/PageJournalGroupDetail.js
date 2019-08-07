@@ -19,7 +19,6 @@ class PageJournalGroupDetail extends Component {
     const studentsList = students.all.map(student => {
       <li key={student.guid}>{student.fullName}</li>
     })
-    console.log(this.props)
     return (
       <div className="page journal__group_detail">
         {studentsList}
