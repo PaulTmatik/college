@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 class PageJournalHome extends Component {
   componentWillMount() {
-    console.log(this.props);
   }
   render() {
     return (

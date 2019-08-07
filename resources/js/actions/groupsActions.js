@@ -8,17 +8,18 @@ export const GetGroupsOnPeriod = period => {
 }
 
 export const getGroupsByTeacher = tGuid => {
-  return {
-    type: ACTIONS_NAMES.GROUPS_GET_BY_TEACHER,
-    tGuid
+  return dispatch => {
+    return window.axios.get(`/api/journal/teacher/${tGuid}/date/2019-09-01`) //30b8b233-3174-49a1-bc8f-b6ed34470d6b
+      .then(response => response.data, error => console.error('Error', error))
+      .then(data => dispatch(reciveClassesByTeacher(tGuid, data)));
   }
 }
 
-export const reciveClassesByTeacher = (tGuid, json) => {
+export const reciveClassesByTeacher = (tGuid, data) => {
   return {
     type: ACTIONS_NAMES.GROUPS_RECIVE_BY_TEACHER,
     tGuid,
-    classes: json.data.children.map(child => child.data),
+    classes: data,
     recivedAt: Date.now()
   }
 }

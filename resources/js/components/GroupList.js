@@ -11,15 +11,16 @@ class GroupList extends Component {
   }
   render() {
     const { groups } = this.props;
+    const allGroups = groups.all ? groups.all.map(group => (
+      <GroupListItem 
+        key={group.guid}
+        name={group.getNameFromDate(new Date())}
+        guid={group.guid}/>
+    )) : null;
     return (
       <nav className="group_list__nav">
         <ul className="group_list">
-          {groups.all.map(group => (
-            <GroupListItem 
-              key={group.guid}
-              name={group.getNameFromDate(new Date())}
-              guid={group.guid}/>
-          ))}
+          {allGroups}
         </ul>
       </nav>
     );

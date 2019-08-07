@@ -50660,6 +50660,38 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/redux-thunk/es/index.js":
+/*!**********************************************!*\
+  !*** ./node_modules/redux-thunk/es/index.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function createThunkMiddleware(extraArgument) {
+  return function (_ref) {
+    var dispatch = _ref.dispatch,
+        getState = _ref.getState;
+    return function (next) {
+      return function (action) {
+        if (typeof action === 'function') {
+          return action(dispatch, getState, extraArgument);
+        }
+
+        return next(action);
+      };
+    };
+  };
+}
+
+var thunk = createThunkMiddleware();
+thunk.withExtraArgument = createThunkMiddleware;
+
+/* harmony default export */ __webpack_exports__["default"] = (thunk);
+
+/***/ }),
+
 /***/ "./node_modules/redux/es/redux.js":
 /*!****************************************!*\
   !*** ./node_modules/redux/es/redux.js ***!
@@ -52898,18 +52930,22 @@ var GetGroupsOnPeriod = function GetGroupsOnPeriod(period) {
   };
 };
 var getGroupsByTeacher = function getGroupsByTeacher(tGuid) {
-  return {
-    type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_GET_BY_TEACHER,
-    tGuid: tGuid
+  return function (dispatch) {
+    return window.axios.get("/api/journal/teacher/".concat(tGuid, "/date/2019-09-01")) //30b8b233-3174-49a1-bc8f-b6ed34470d6b
+    .then(function (response) {
+      return response.data;
+    }, function (error) {
+      return console.error('Error', error);
+    }).then(function (data) {
+      return dispatch(reciveClassesByTeacher(tGuid, data));
+    });
   };
 };
-var reciveClassesByTeacher = function reciveClassesByTeacher(tGuid, json) {
+var reciveClassesByTeacher = function reciveClassesByTeacher(tGuid, data) {
   return {
     type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_RECIVE_BY_TEACHER,
     tGuid: tGuid,
-    classes: json.data.children.map(function (child) {
-      return child.data;
-    }),
+    classes: data,
     recivedAt: Date.now()
   };
 };
@@ -53081,17 +53117,18 @@ function (_Component) {
     key: "render",
     value: function render() {
       var groups = this.props.groups;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "group_list__nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "group_list"
-      }, groups.all.map(function (group) {
+      var allGroups = groups.all ? groups.all.map(function (group) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GroupListItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: group.guid,
           name: group.getNameFromDate(new Date()),
           guid: group.guid
         });
-      })));
+      }) : null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "group_list__nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "group_list"
+      }, allGroups));
     }
   }]);
 
@@ -53392,9 +53429,7 @@ function (_Component) {
 
   _createClass(PageJournalHome, [{
     key: "componentWillMount",
-    value: function componentWillMount() {
-      console.log(this.props);
-    }
+    value: function componentWillMount() {}
   }, {
     key: "render",
     value: function render() {
@@ -53503,12 +53538,18 @@ __webpack_require__(/*! ./components/JournalApplication */ "./resources/js/compo
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
 /* harmony import */ var _structures_Group__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../structures/Group */ "./resources/js/structures/Group.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 var defautGroupsStore = [new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("57f4b9fd-6222-4b2d-8328-2917681f608d", "%№+1%01", new Date(2016, 8, 1), new Date(2019, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("02b864fb-d116-4952-b74b-6852ee37d117", "%№%02", new Date(2015, 8, 1), new Date(2019, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("e5f7a7ee-7527-4393-93e6-5b2d36615052", "%№%01", new Date(2018, 8, 1), new Date(2022, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("b33f9dd9-a186-469f-96f9-93acca9d9f7c", "%№%11", new Date(2018, 8, 1), new Date(2022, 6, 1))];
 var baseState = {
   selected: undefined,
-  all: defautGroupsStore
+  all: []
 };
 
 var groupsReducer = function groupsReducer() {
@@ -53516,27 +53557,12 @@ var groupsReducer = function groupsReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_GET_BY_TEACHER:
-      return function (dispatch) {
-        return window.axios.get("/api/journal/teacher/".concat(action.tGuid, "/date/2019-09-01")) //30b8b233-3174-49a1-bc8f-b6ed34470d6b
-        .then(function (response) {
-          return response.json();
-        }, function (error) {
-          return console.error('Error', error);
-        }).then(function (json) {
-          return dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_0__["reciveClassesByTeacher"])(action.tGuid, json));
-        });
-      };
-    // const newState = state.all = defautGroupsStore.filter(group => {
-    //   return getActualOnly(group, action.period);
-    // });
-    // return newState;
-
     case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_RECIVE_BY_TEACHER:
-      baseState.all = action.classes.map(function (cl) {
-        return new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"](cl.guid, cl.class_name, new Date(cl.started_at), new Date(cl.ended_in));
+      return _objectSpread({}, state, {
+        all: action.classes.map(function (cl) {
+          return new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"](cl.guid, cl.class_name, new Date(cl.started_at), new Date(cl.ended_in));
+        })
       });
-      return baseState;
 
     default:
       return state;
@@ -53647,10 +53673,12 @@ var studentsReducer = function studentsReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../reducers */ "./resources/js/reducers/index.js");
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers */ "./resources/js/reducers/index.js");
 
 
-var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"]));
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),
@@ -53818,8 +53846,8 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Workplace\college_service\college\resources\js\journal.js */"./resources/js/journal.js");
-module.exports = __webpack_require__(/*! D:\Workplace\college_service\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
+__webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\js\journal.js */"./resources/js/journal.js");
+module.exports = __webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
 
 
 /***/ })
