@@ -53360,6 +53360,7 @@ function (_Component) {
 
       var groups = this.props.groups;
       var selectedLesson = groups.selectedLesson ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, groups.selectedLesson.lesson_name) : null;
+      console.log(groups.selectedLesson);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, selectedLesson, groups.lessons.map(function (lesson) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: lesson.guid

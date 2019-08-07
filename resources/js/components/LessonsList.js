@@ -9,6 +9,7 @@ class LessonsList extends Component {
     const selectedLesson = groups.selectedLesson
       ? <li>{groups.selectedLesson.lesson_name}</li>
       : null;
+    console.log(groups.selectedLesson);
     return (
       <ul>
         {selectedLesson}

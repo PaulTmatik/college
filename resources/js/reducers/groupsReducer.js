@@ -26,7 +26,7 @@ const groupsReducer = (state = baseState, action) => {
       return {
         ...state,
         selectedLesson: action.lesson
-      }
+      };
     default:
       return state;
   }
