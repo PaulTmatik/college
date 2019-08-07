@@ -47666,7 +47666,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52964,7 +52964,7 @@ var reciveClassesByTeacher = function reciveClassesByTeacher(tGuid, data) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveClassesByTeacher, getStudentsInGroup, ACTIONS_NAMES */
+/*! exports provided: ACTIONS_NAMES, GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveClassesByTeacher, getStudentsInGroup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53946,8 +53946,8 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\js\journal.js */"./resources/js/journal.js");
-module.exports = __webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
+__webpack_require__(/*! D:\Workplace\college_service\college\resources\js\journal.js */"./resources/js/journal.js");
+module.exports = __webpack_require__(/*! D:\Workplace\college_service\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
 
 
 /***/ })

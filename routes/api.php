@@ -21,18 +21,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/journal/teacher/{guid}/date/{date}', function (string $guid, string $date) {
-    $input = [$guid, $date];
-    $groups = collect(DB::select('select * from college.get_work_classes(?,?)', $input))
-        ->map(function ($item) {
-            $date_format = 'Y-m-d';
-            return [
-                'guid' => $item->guid,
-                'class_name' => $item->class_name,
-                'started_at' => Carbon::parse($item->started_at)->format($date_format),
-                'ended_in' => Carbon::parse($item->ended_in)->format($date_format)
-            ];
-        });
-    $lessons = collect(DB::select('select * from college.get_work_lessons(?,?)', $input));
+    // $input = [$guid, $date];
+    // $groups = collect(DB::select('select * from college.get_work_classes(?,?)', $input))
+    //     ->map(function ($item) {
+    //         $date_format = 'Y-m-d';
+    //         return [
+    //             'guid' => $item->guid,
+    //             'class_name' => $item->class_name,
+    //             'started_at' => Carbon::parse($item->started_at)->format($date_format),
+    //             'ended_in' => Carbon::parse($item->ended_in)->format($date_format)
+    //         ];
+    //     });
+    // $lessons = collect(DB::select('select * from college.get_work_lessons(?,?)', $input));
     $fake = [
         "classes" => [
             [
@@ -89,8 +89,8 @@ Route::get('/journal/teacher/{guid}/date/{date}', function (string $guid, string
 );
 
 Route::get('/journal/students/{groupGuid}/date/{date}', function (string $groupGuid, string $date) {
-    $input = [$groupGuid, $date];
-    $students = collect(DB::select('select * from college.get_actual_students_by_class(?,?)', $input));
+    // $input = [$groupGuid, $date];
+    // $students = collect(DB::select('select * from college.get_actual_students_by_class(?,?)', $input));
     $fake = [
         [
             "guid" => "784a6c6e-36b0-4ab3-8caf-d7ab75b865a1",
@@ -222,6 +222,22 @@ Route::get('/journal/students/{groupGuid}/date/{date}', function (string $groupG
         ],
 
     ];
+    $fake = collect($fake)->map(function ($stud) {
+        $date_format = 'Y-m-d';
+        $full_name = collect(explode(',', $stud['full_name']))
+            ->map(function ($item) {
+                return trim($item, '(")');
+            })
+            ->toArray();
+        return [
+            "guid" => $stud['guid'],
+            "full_name" => $full_name,
+            "birth_at" => Carbon::parse($stud['birth_at'])->format($date_format),
+            "gender" => $stud['gender'],
+            "entred_at" => Carbon::parse($stud['entred_at'])->format($date_format),
+            "ended_in" => is_null($stud['ended_in']) ? null : Carbon::parse($stud['ended_in'])->format($date_format)
+        ];
+    });
     return ['students' => $fake];
 })->where(
     [
