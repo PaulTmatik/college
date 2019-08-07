@@ -52881,18 +52881,36 @@ module.exports = function(module) {
 /*!***********************************************!*\
   !*** ./resources/js/actions/groupsActions.js ***!
   \***********************************************/
-/*! exports provided: GetGroupsOnPeriod */
+/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, reciveClassesByTeacher */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetGroupsOnPeriod", function() { return GetGroupsOnPeriod; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getGroupsByTeacher", function() { return getGroupsByTeacher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveClassesByTeacher", function() { return reciveClassesByTeacher; });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./resources/js/actions/index.js");
 
 var GetGroupsOnPeriod = function GetGroupsOnPeriod(period) {
   return {
     type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_GET_ON_PERIOD,
     period: period
+  };
+};
+var getGroupsByTeacher = function getGroupsByTeacher(tGuid) {
+  return {
+    type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_GET_BY_TEACHER,
+    tGuid: tGuid
+  };
+};
+var reciveClassesByTeacher = function reciveClassesByTeacher(tGuid, json) {
+  return {
+    type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_RECIVE_BY_TEACHER,
+    tGuid: tGuid,
+    classes: json.data.children.map(function (child) {
+      return child.data;
+    }),
+    recivedAt: Date.now()
   };
 };
 
@@ -52902,7 +52920,7 @@ var GetGroupsOnPeriod = function GetGroupsOnPeriod(period) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: GetGroupsOnPeriod, getStudentsInGroup, ACTIONS_NAMES */
+/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, reciveClassesByTeacher, getStudentsInGroup, ACTIONS_NAMES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52911,6 +52929,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _groupsActions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./groupsActions */ "./resources/js/actions/groupsActions.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GetGroupsOnPeriod", function() { return _groupsActions__WEBPACK_IMPORTED_MODULE_0__["GetGroupsOnPeriod"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getGroupsByTeacher", function() { return _groupsActions__WEBPACK_IMPORTED_MODULE_0__["getGroupsByTeacher"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reciveClassesByTeacher", function() { return _groupsActions__WEBPACK_IMPORTED_MODULE_0__["reciveClassesByTeacher"]; });
+
 /* harmony import */ var _studentsActions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./studentsActions */ "./resources/js/actions/studentsActions.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getStudentsInGroup", function() { return _studentsActions__WEBPACK_IMPORTED_MODULE_1__["getStudentsInGroup"]; });
 
@@ -52918,6 +52940,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var ACTIONS_NAMES = {
   GROUPS_GET_ON_PERIOD: 'GROUPS_GET_ON_PERIOD',
+  GROUPS_RECIVE_BY_TEACHER: 'GROUPS_RECIVE_BY_TEACHER',
+  GROUPS_GET_BY_TEACHER: 'GROUPS_GET_BY_TEACHER',
   STUDENTS_GET_IN_GROUP: 'STUDENTS_GET_IN_GROUP'
 };
 
@@ -53051,7 +53075,7 @@ function (_Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       var dispatch = this.props.dispatch;
-      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["GetGroupsOnPeriod"])('2019-09-01'));
+      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["getGroupsByTeacher"])('30b8b233-3174-49a1-bc8f-b6ed34470d6b'));
     }
   }, {
     key: "render",
@@ -53492,16 +53516,27 @@ var groupsReducer = function groupsReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_GET_ON_PERIOD:
-      window.axios.get('/api/journal/teacher/30b8b233-3174-49a1-bc8f-b6ed34470d6b/date/2019-09-01').then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.error(error);
+    case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_GET_BY_TEACHER:
+      return function (dispatch) {
+        return window.axios.get("/api/journal/teacher/".concat(action.tGuid, "/date/2019-09-01")) //30b8b233-3174-49a1-bc8f-b6ed34470d6b
+        .then(function (response) {
+          return response.json();
+        }, function (error) {
+          return console.error('Error', error);
+        }).then(function (json) {
+          return dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_0__["reciveClassesByTeacher"])(action.tGuid, json));
+        });
+      };
+    // const newState = state.all = defautGroupsStore.filter(group => {
+    //   return getActualOnly(group, action.period);
+    // });
+    // return newState;
+
+    case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_RECIVE_BY_TEACHER:
+      baseState.all = action.classes.map(function (cl) {
+        return new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"](cl.guid, cl.class_name, new Date(cl.started_at), new Date(cl.ended_in));
       });
-      var newState = state.all = defautGroupsStore.filter(function (group) {
-        return getActualOnly(group, action.period);
-      });
-      return newState;
+      return baseState;
 
     default:
       return state;
@@ -53783,8 +53818,8 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\js\journal.js */"./resources/js/journal.js");
-module.exports = __webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
+__webpack_require__(/*! D:\Workplace\college_service\college\resources\js\journal.js */"./resources/js/journal.js");
+module.exports = __webpack_require__(/*! D:\Workplace\college_service\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
 
 
 /***/ })

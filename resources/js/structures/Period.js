@@ -36,3 +36,5 @@ class Period {
       this.end.getTime() === period.end.getTime();
   }
 }
+
+export default Period;

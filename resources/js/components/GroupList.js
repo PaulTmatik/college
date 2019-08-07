@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import GroupListItem from './GroupListItem';
-import {GetGroupsOnPeriod} from '../actions';
+import {getGroupsByTeacher} from '../actions';
 
 class GroupList extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
-    dispatch(GetGroupsOnPeriod('2019-09-01'));
+    dispatch(getGroupsByTeacher('30b8b233-3174-49a1-bc8f-b6ed34470d6b'));
   }
   render() {
     const { groups } = this.props;

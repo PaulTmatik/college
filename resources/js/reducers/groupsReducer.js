@@ -1,4 +1,4 @@
-import {ACTIONS_NAMES} from '../actions';
+import { ACTIONS_NAMES, reciveClassesByTeacher } from '../actions';
 import Group from '../structures/Group';
 
 const defautGroupsStore = [
@@ -22,26 +22,27 @@ const baseState = {
 }
 
 const groupsReducer = (state = baseState, action) => {
-  switch(action.type) {
-    case ACTIONS_NAMES.GROUPS_GET_ON_PERIOD:
-      window.axios.get('/api/journal/teacher/30b8b233-3174-49a1-bc8f-b6ed34470d6b/date/2019-09-01')
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-      const newState = state.all = defautGroupsStore.filter(group => {
-        return getActualOnly(group, action.period);
-      });
-      return newState;
+  switch (action.type) {
+    case ACTIONS_NAMES.GROUPS_GET_BY_TEACHER:
+      return dispatch => {
+        return window.axios.get(`/api/journal/teacher/${action.tGuid}/date/2019-09-01`) //30b8b233-3174-49a1-bc8f-b6ed34470d6b
+          .then(response => response.json(), error => console.error('Error', error))
+          .then(json => dispatch(reciveClassesByTeacher(action.tGuid, json)));
+      }
+    // const newState = state.all = defautGroupsStore.filter(group => {
+    //   return getActualOnly(group, action.period);
+    // });
+    // return newState;
+    case ACTIONS_NAMES.GROUPS_RECIVE_BY_TEACHER:
+      baseState.all = action.classes.map(cl => new Group(cl.guid, cl.class_name, new Date(cl.started_at), new Date(cl.ended_in)))
+      return baseState;
     default:
       return state;
   }
 }
 
 function getActualOnly(group, period) {
-  return group.endedIn.getTime() > period.end.getTime() 
+  return group.endedIn.getTime() > period.end.getTime()
     && period.end.getTime() >= group.startedAt.getTime();
 }
 
