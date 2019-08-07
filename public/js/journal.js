@@ -47666,7 +47666,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52964,7 +52964,7 @@ var reciveClassesByTeacher = function reciveClassesByTeacher(tGuid, data) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: ACTIONS_NAMES, GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveClassesByTeacher, getStudentsInGroup */
+/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveClassesByTeacher, getStudentsInGroup, reciveStudentsInGroup, ACTIONS_NAMES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52982,6 +52982,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _studentsActions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./studentsActions */ "./resources/js/actions/studentsActions.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getStudentsInGroup", function() { return _studentsActions__WEBPACK_IMPORTED_MODULE_1__["getStudentsInGroup"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reciveStudentsInGroup", function() { return _studentsActions__WEBPACK_IMPORTED_MODULE_1__["reciveStudentsInGroup"]; });
+
 
 
 var ACTIONS_NAMES = {
@@ -52998,18 +53000,32 @@ var ACTIONS_NAMES = {
 /*!*************************************************!*\
   !*** ./resources/js/actions/studentsActions.js ***!
   \*************************************************/
-/*! exports provided: getStudentsInGroup */
+/*! exports provided: getStudentsInGroup, reciveStudentsInGroup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStudentsInGroup", function() { return getStudentsInGroup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveStudentsInGroup", function() { return reciveStudentsInGroup; });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./resources/js/actions/index.js");
 
 var getStudentsInGroup = function getStudentsInGroup(groupGuid) {
+  return function (dispatch) {
+    return window.axios.get("/api/journal/students/".concat(groupGuid, "/date/2019-09-01")).then(function (response) {
+      return response.data;
+    }, function (error) {
+      return console.error('Error', error);
+    }).then(function (data) {
+      return dispatch(reciveStudentsInGroup(groupGuid, data));
+    });
+  };
+};
+var reciveStudentsInGroup = function reciveStudentsInGroup(groupGuid, data) {
   return {
     type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].STUDENTS_GET_IN_GROUP,
-    groupGuid: groupGuid
+    groupGuid: groupGuid,
+    students: data.students || [],
+    recivedAt: Date.now()
   };
 };
 
@@ -53456,14 +53472,15 @@ function (_Component) {
     key: "render",
     value: function render() {
       var students = this.props.students;
+      console.log(students);
       var studentsList = students.all.map(function (student) {
-        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: student.guid
         }, student.fullName);
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "page journal__group_detail"
-      }, studentsList);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, studentsList));
     }
   }]);
 
@@ -53710,33 +53727,17 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
 /* harmony import */ var _structures_Student__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../structures/Student */ "./resources/js/structures/Student.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var defaultStudentsStore = [new _structures_Student__WEBPACK_IMPORTED_MODULE_1__["default"]("edde322b-57c1-4966-a850-11203904d19a", "Иваненко", "Валерий", "Викторович", "male", new Date(2001, 11, 23), new Date(2016, 8, 1), new Date(2019, 6, 1)), //.groups.push("57f4b9fd-6222-4b2d-8328-2917681f608d")
-new _structures_Student__WEBPACK_IMPORTED_MODULE_1__["default"]("7e1be992-221d-4358-a1fc-2106f465046a", "Васильева", "Ксения", "Николаевна", "female", new Date(1999, 7, 15), new Date(2016, 8, 1), new Date(2019, 6, 1)), //.groups.push('57f4b9fd-6222-4b2d-8328-2917681f608d')
-new _structures_Student__WEBPACK_IMPORTED_MODULE_1__["default"]("80fcc67b-6166-4683-8ea9-e7645832218c", "Урутумаев", "Удыр", "Башкурванунович", "male", new Date(2001, 3, 29), new Date(2016, 8, 1), new Date(2019, 6, 1)), //.groups.push("57f4b9fd-6222-4b2d-8328-2917681f608d")
-new _structures_Student__WEBPACK_IMPORTED_MODULE_1__["default"]("6dafa587-957d-4cd0-8a6c-067602ba42fb", "Сергеенко", "Артур", "Мерлинович", "male", new Date(1998, 4, 22), new Date(2015, 8, 1), new Date(2019, 6, 1)), //.groups.push("02b864fb-d116-4952-b74b-6852ee37d117")
-new _structures_Student__WEBPACK_IMPORTED_MODULE_1__["default"]("c01cf558-5fa2-4587-b742-a62a4f6dfa02", "Кошкина", "Нина", "Собаковна", "female", new Date(1999, 7, 14), new Date(2015, 8, 1), new Date(2019, 6, 1)) //.groups.push("02b864fb-d116-4952-b74b-6852ee37d117")
-];
-var studentGroups = [{
-  sGuid: "edde322b-57c1-4966-a850-11203904d19a",
-  gGuid: "57f4b9fd-6222-4b2d-8328-2917681f608d"
-}, {
-  sGuid: "7e1be992-221d-4358-a1fc-2106f465046a",
-  gGuid: '57f4b9fd-6222-4b2d-8328-2917681f608d'
-}, {
-  sGuid: "80fcc67b-6166-4683-8ea9-e7645832218c",
-  gGuid: "57f4b9fd-6222-4b2d-8328-2917681f608d"
-}, {
-  sGuid: "6dafa587-957d-4cd0-8a6c-067602ba42fb",
-  gGuid: "02b864fb-d116-4952-b74b-6852ee37d117"
-}, {
-  sGuid: "c01cf558-5fa2-4587-b742-a62a4f6dfa02",
-  gGuid: "02b864fb-d116-4952-b74b-6852ee37d117"
-}];
+
 var baseState = {
   selected: undefined,
-  all: defaultStudentsStore
+  all: []
 };
 
 var studentsReducer = function studentsReducer() {
@@ -53745,16 +53746,13 @@ var studentsReducer = function studentsReducer() {
 
   switch (action.type) {
     case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].STUDENTS_GET_IN_GROUP:
-      state.all = defaultStudentsStore.filter(function (student) {
-        var sg = studentGroups.filter(function (sgr) {
-          return sgr.sGuid === student.guid && sgr.gGuid === action.groupGuid;
-        });
-        return sg.length > 0;
+      return _objectSpread({}, state, {
+        all: action.students.map(function (st) {
+          return new _structures_Student__WEBPACK_IMPORTED_MODULE_1__["default"](st.guid, st.full_name[0], st.full_name[1], st.full_name[2], st.gender, new Date(st.birth_at), new Date(st.entred_at), st.ended_in === null ? null : new Date(st.ended_in));
+        })
       });
-      return state;
 
     default:
-      state.all = defaultStudentsStore;
       return state;
   }
 };

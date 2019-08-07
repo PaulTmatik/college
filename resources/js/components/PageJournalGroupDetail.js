@@ -16,12 +16,15 @@ class PageJournalGroupDetail extends Component {
   }
   render() {
     const { students } = this.props;
-    const studentsList = students.all.map(student => {
+    console.log(students);
+    const studentsList = students.all.map(student => 
       <li key={student.guid}>{student.fullName}</li>
-    })
+    );
     return (
       <div className="page journal__group_detail">
-        {studentsList}
+        <ol>
+          {studentsList}
+        </ol>
       </div>
     );
   }
