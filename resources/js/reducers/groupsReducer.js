@@ -18,7 +18,8 @@ const defautGroupsStore = [
 
 const baseState = {
   selected: undefined,
-  all: []
+  groups: [],
+  lessons: []
 }
 
 const groupsReducer = (state = baseState, action) => {
@@ -26,13 +27,14 @@ const groupsReducer = (state = baseState, action) => {
     case ACTIONS_NAMES.GROUPS_RECIVE_BY_TEACHER:
       return {
         ...state,
-        all: action.classes.map(
+        groups: action.classes.map(
           cl => new Group(
             cl.guid, 
             cl.class_name, 
             new Date(cl.started_at), 
             new Date(cl.ended_in))
-        )
+        ),
+        lessons: action.lessons
       };
     default:
       return state;

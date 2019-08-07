@@ -19,7 +19,8 @@ export const reciveClassesByTeacher = (tGuid, data) => {
   return {
     type: ACTIONS_NAMES.GROUPS_RECIVE_BY_TEACHER,
     tGuid,
-    classes: data,
+    classes: data.classes || [],
+    lessons: data.lessons || [],
     recivedAt: Date.now()
   }
 }

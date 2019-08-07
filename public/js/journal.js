@@ -52945,7 +52945,8 @@ var reciveClassesByTeacher = function reciveClassesByTeacher(tGuid, data) {
   return {
     type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_RECIVE_BY_TEACHER,
     tGuid: tGuid,
-    classes: data,
+    classes: data.classes || [],
+    lessons: data.lessons || [],
     recivedAt: Date.now()
   };
 };
@@ -53117,7 +53118,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       var groups = this.props.groups;
-      var allGroups = groups.all ? groups.all.map(function (group) {
+      var allGroups = groups.groups ? groups.groups.map(function (group) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GroupListItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: group.guid,
           name: group.getNameFromDate(new Date()),
@@ -53549,7 +53550,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var defautGroupsStore = [new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("57f4b9fd-6222-4b2d-8328-2917681f608d", "%№+1%01", new Date(2016, 8, 1), new Date(2019, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("02b864fb-d116-4952-b74b-6852ee37d117", "%№%02", new Date(2015, 8, 1), new Date(2019, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("e5f7a7ee-7527-4393-93e6-5b2d36615052", "%№%01", new Date(2018, 8, 1), new Date(2022, 6, 1)), new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"]("b33f9dd9-a186-469f-96f9-93acca9d9f7c", "%№%11", new Date(2018, 8, 1), new Date(2022, 6, 1))];
 var baseState = {
   selected: undefined,
-  all: []
+  groups: [],
+  lessons: []
 };
 
 var groupsReducer = function groupsReducer() {
@@ -53559,9 +53561,10 @@ var groupsReducer = function groupsReducer() {
   switch (action.type) {
     case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].GROUPS_RECIVE_BY_TEACHER:
       return _objectSpread({}, state, {
-        all: action.classes.map(function (cl) {
+        groups: action.classes.map(function (cl) {
           return new _structures_Group__WEBPACK_IMPORTED_MODULE_1__["default"](cl.guid, cl.class_name, new Date(cl.started_at), new Date(cl.ended_in));
-        })
+        }),
+        lessons: action.lessons
       });
 
     default:

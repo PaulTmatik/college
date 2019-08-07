@@ -11,7 +11,7 @@ class GroupList extends Component {
   }
   render() {
     const { groups } = this.props;
-    const allGroups = groups.all ? groups.all.map(group => (
+    const allGroups = groups.groups ? groups.groups.map(group => (
       <GroupListItem 
         key={group.guid}
         name={group.getNameFromDate(new Date())}
