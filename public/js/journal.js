@@ -53144,7 +53144,9 @@ function (_Component) {
     key: "render",
     value: function render() {
       var groups = this.props.groups;
-      var allGroups = groups.groups ? groups.groups.map(function (group) {
+      var allGroups = groups.groups ? [].concat(groups.groups).sort(function (a, b) {
+        return a.getNameFromDate(new Date()).localeCompare(b.getNameFromDate(new Date()));
+      }).map(function (group) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GroupListItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
           key: group.guid,
           name: group.getNameFromDate(new Date()),
