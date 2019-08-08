@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('journal')->group(function () {
+    Route::get('group/{guid}', function () {
+        return view('welcome');
+    });
+});

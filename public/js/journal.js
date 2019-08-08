@@ -53227,7 +53227,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "group_list__item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/group/".concat(guid)
+        to: "/journal/group/".concat(guid)
       }, "".concat(name, " \u0433\u0440\u0443\u043F\u043F\u0430")));
     }
   }]);
@@ -53301,16 +53301,14 @@ function (_Component) {
   _createClass(JournalApplication, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
-        store: _store__WEBPACK_IMPORTED_MODULE_4__["default"]
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "journal_application"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_GroupList__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LessonsList__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/",
         component: _PageJournalHome__WEBPACK_IMPORTED_MODULE_7__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/group/:guid",
+        path: "/journal/group/:guid",
         component: _PageJournalGroupDetail__WEBPACK_IMPORTED_MODULE_8__["default"]
       })));
     }
@@ -53320,7 +53318,9 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 if (document.getElementById('application')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(JournalApplication, null)), document.getElementById('application'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
+    store: _store__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(JournalApplication, null)), document.getElementById('application'));
 }
 
 /***/ }),
@@ -53422,7 +53422,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+/* harmony import */ var _StudentsJournal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StudentsJournal */ "./resources/js/components/StudentsJournal.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53451,38 +53451,20 @@ function (_Component) {
   _inherits(PageJournalGroupDetail, _Component);
 
   function PageJournalGroupDetail() {
-    var _this;
-
     _classCallCheck(this, PageJournalGroupDetail);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(PageJournalGroupDetail).call(this));
-    _this.state = {
-      students: []
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(PageJournalGroupDetail).apply(this, arguments));
   }
 
   _createClass(PageJournalGroupDetail, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      var _this$props = this.props,
-          dispatch = _this$props.dispatch,
-          match = _this$props.match;
-      if (match.params.guid) dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["getStudentsInGroup"])(match.params.guid));
-    }
-  }, {
     key: "render",
     value: function render() {
-      var students = this.props.students;
-      console.log(students);
-      var studentsList = students.all.map(function (student) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: student.guid
-        }, student.fullName);
-      });
+      var match = this.props.match;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "page journal__group_detail"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, studentsList));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StudentsJournal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        groupGuid: match.params.guid
+      }));
     }
   }]);
 
@@ -53565,6 +53547,106 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(PageJournalHome));
+
+/***/ }),
+
+/***/ "./resources/js/components/StudentsJournal.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/StudentsJournal.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var StudentsJournal =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(StudentsJournal, _Component);
+
+  function StudentsJournal() {
+    _classCallCheck(this, StudentsJournal);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(StudentsJournal).apply(this, arguments));
+  }
+
+  _createClass(StudentsJournal, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.loadData();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.groupGuid !== prevProps.groupGuid) {
+        this.loadData();
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var students = this.props.students;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "students-journal"
+      }, this.studentsList(students.all));
+    }
+  }, {
+    key: "loadData",
+    value: function loadData() {
+      var _this$props = this.props,
+          dispatch = _this$props.dispatch,
+          groupGuid = _this$props.groupGuid;
+      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["getStudentsInGroup"])(groupGuid));
+    }
+  }, {
+    key: "studentsList",
+    value: function studentsList(students) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
+        className: "students-journal__list"
+      }, students.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: item.guid
+        }, item.fullName);
+      }));
+    }
+  }]);
+
+  return StudentsJournal;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapStateToProp = function mapStateToProp(state) {
+  return {
+    students: state.students
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProp)(StudentsJournal));
 
 /***/ }),
 
@@ -53946,8 +54028,8 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Workplace\college_service\college\resources\js\journal.js */"./resources/js/journal.js");
-module.exports = __webpack_require__(/*! D:\Workplace\college_service\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
+__webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\js\journal.js */"./resources/js/journal.js");
+module.exports = __webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
 
 
 /***/ })

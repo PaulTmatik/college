@@ -13,18 +13,18 @@ import PageJournalGroupDetail from './PageJournalGroupDetail';
 class JournalApplication extends Component {
   render() {
     return (
-      <Provider store={store}>
+      <Router>
         <div className="journal_application">
           <GroupList />
           <LessonsList />
           <Route exact path="/" component={PageJournalHome} />
-          <Route path="/group/:guid" component={PageJournalGroupDetail} />
+          <Route path="/journal/group/:guid" component={PageJournalGroupDetail} />
         </div>
-      </Provider>
+      </Router>
     );
   }
 }
 
 if (document.getElementById('application')) {
-  ReactDOM.render(<Router><JournalApplication /></Router>, document.getElementById('application'));
+  ReactDOM.render(<Provider store={store}><JournalApplication /></Provider>, document.getElementById('application'));
 }

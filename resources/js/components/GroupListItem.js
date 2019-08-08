@@ -6,7 +6,7 @@ class GroupListItem extends Component {
     const { name, guid } = this.props;
     return (
       <li className="group_list__item">
-        <Link to={`/group/${guid}`}>{`${name} группа`}</Link>
+        <Link to={`/journal/group/${guid}`}>{`${name} группа`}</Link>
       </li>
     );
   }
