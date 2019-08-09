@@ -8,7 +8,7 @@
     <title>ГАПОУ НСО «Карасукский педагогический колледж»</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
   </head>
-  <body style="background-color: #eee;">
+  <body>
     <div id="application"></div>
     <script src="js/journal.js"></script>
   </body>
