@@ -3,34 +3,34 @@ import { connect } from 'react-redux';
 
 import { setGroupLesson } from '../actions';
 
+import DropDownSelector, { DropDownItemAdapter } from './DropDownSelector';
+
 class LessonsList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onSetLesson = this.onSetLesson.bind(this);
+  }
   render() {
     const { groups } = this.props;
     const selectedLesson = groups.selectedLesson
-      ? <li>{groups.selectedLesson.lesson_name}</li>
+      ? new DropDownItemAdapter(groups.selectedLesson.guid, groups.selectedLesson.lesson_name, null)
       : null;
-    console.log(groups.selectedLesson);
     return (
-      <ul>
-        {selectedLesson}
-        {groups.lessons.map(
-          lesson => (
-            <li key={lesson.guid}>
-              <button
-                onClick={() => this.onSetLesson(lesson)}
-              >
-                {lesson.lesson_name}
-              </button>
-            </li>
-          )
-        )}
-      </ul>
+      <div className="lessons_list">
+        <DropDownSelector 
+          items={groups.lessons.map(lesson => new DropDownItemAdapter(lesson.guid, lesson.lesson_name, null))}
+          selected={selectedLesson}
+          onSelect={this.onSetLesson}
+        />
+      </div>
     );
   }
 
   onSetLesson(lessonGuid) {
-    const { dispatch } = this.props;
-    dispatch(setGroupLesson(lessonGuid));
+    const { dispatch, groups } = this.props;
+    let lesson = groups.lessons.find(lesson => lesson.guid === lessonGuid);
+    dispatch(setGroupLesson(lesson));
   }
 }
 

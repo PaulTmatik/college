@@ -7,6 +7,7 @@ import { getGroupsByTeacher } from '../actions';
 class GroupList extends Component {
   componentWillMount() {
     const { dispatch } = this.props;
+    /*TODO: изменить после добавления авторизации*/
     dispatch(getGroupsByTeacher('30b8b233-3174-49a1-bc8f-b6ed34470d6b'));
   }
   

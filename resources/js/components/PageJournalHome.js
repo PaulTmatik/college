@@ -6,7 +6,7 @@ class PageJournalHome extends Component {
   }
   render() {
     return (
-      <div className="page journal_home">
+      <div className="page journal__home">
         <h1>Главная журнала</h1>
       </div>
     );

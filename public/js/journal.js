@@ -53086,6 +53086,123 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/js/components/DropDownSelector.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/DropDownSelector.js ***!
+  \*****************************************************/
+/*! exports provided: DropDownItemAdapter, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DropDownItemAdapter", function() { return DropDownItemAdapter; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+var DropDownItemAdapter = function DropDownItemAdapter(id, firstLine, secondLine) {
+  _classCallCheck(this, DropDownItemAdapter);
+
+  this.id = id;
+  this.firstLine = firstLine;
+  this.secondLine = secondLine;
+};
+
+var DropDownSelector =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(DropDownSelector, _Component);
+
+  function DropDownSelector(props) {
+    var _this;
+
+    _classCallCheck(this, DropDownSelector);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DropDownSelector).call(this, props));
+    _this.state = {
+      isOpen: false
+    };
+    _this.drawItem = _this.drawItem.bind(_assertThisInitialized(_this));
+    _this.drawItems = _this.drawItems.bind(_assertThisInitialized(_this));
+    _this.onOpenList = _this.onOpenList.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(DropDownSelector, [{
+    key: "render",
+    value: function render() {
+      var selected = this.props.selected;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drop-down__selector"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "drop-down__pane"
+      }, selected ? this.drawItem(selected.id, selected.firstLine, selected.secondLine) : null, this.drawItems()));
+    }
+  }, {
+    key: "drawItems",
+    value: function drawItems() {
+      var _this2 = this;
+
+      var items = this.props.items;
+      return items.map(function (item) {
+        return _this2.drawItem(item.id, item.firstLine, item.secondLine);
+      });
+    }
+  }, {
+    key: "drawItem",
+    value: function drawItem(id, firstLine, secondLine) {
+      var _this3 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: id,
+        className: "drop-down__item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "drop-down__button",
+        onClick: function onClick() {
+          return _this3.onOpenList(id);
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drop-down__first_line"
+      }, firstLine), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "drop-down__second_line"
+      }, secondLine)));
+    }
+  }, {
+    key: "onOpenList",
+    value: function onOpenList(id) {
+      var onSelect = this.props.onSelect;
+      var isOpen = this.state.isOpen;
+      if (isOpen) onSelect(id);
+      this.setState({
+        isOpen: !isOpen
+      });
+    }
+  }]);
+
+  return DropDownSelector;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (DropDownSelector);
+
+/***/ }),
+
 /***/ "./resources/js/components/GroupList.js":
 /*!**********************************************!*\
   !*** ./resources/js/components/GroupList.js ***!
@@ -53138,6 +53255,8 @@ function (_Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       var dispatch = this.props.dispatch;
+      /*TODO: изменить после добавления авторизации*/
+
       dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["getGroupsByTeacher"])('30b8b233-3174-49a1-bc8f-b6ed34470d6b'));
     }
   }, {
@@ -53338,6 +53457,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+/* harmony import */ var _DropDownSelector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DropDownSelector */ "./resources/js/components/DropDownSelector.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53348,13 +53468,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -53365,35 +53486,41 @@ var LessonsList =
 function (_Component) {
   _inherits(LessonsList, _Component);
 
-  function LessonsList() {
+  function LessonsList(props) {
+    var _this;
+
     _classCallCheck(this, LessonsList);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(LessonsList).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(LessonsList).call(this, props));
+    _this.onSetLesson = _this.onSetLesson.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(LessonsList, [{
     key: "render",
     value: function render() {
-      var _this = this;
-
       var groups = this.props.groups;
-      var selectedLesson = groups.selectedLesson ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, groups.selectedLesson.lesson_name) : null;
-      console.log(groups.selectedLesson);
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, selectedLesson, groups.lessons.map(function (lesson) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: lesson.guid
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: function onClick() {
-            return _this.onSetLesson(lesson);
-          }
-        }, lesson.lesson_name));
+      var selectedLesson = groups.selectedLesson ? new _DropDownSelector__WEBPACK_IMPORTED_MODULE_3__["DropDownItemAdapter"](groups.selectedLesson.guid, groups.selectedLesson.lesson_name, null) : null;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "lessons_list"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DropDownSelector__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        items: groups.lessons.map(function (lesson) {
+          return new _DropDownSelector__WEBPACK_IMPORTED_MODULE_3__["DropDownItemAdapter"](lesson.guid, lesson.lesson_name, null);
+        }),
+        selected: selectedLesson,
+        onSelect: this.onSetLesson
       }));
     }
   }, {
     key: "onSetLesson",
     value: function onSetLesson(lessonGuid) {
-      var dispatch = this.props.dispatch;
-      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setGroupLesson"])(lessonGuid));
+      var _this$props = this.props,
+          dispatch = _this$props.dispatch,
+          groups = _this$props.groups;
+      var lesson = groups.lessons.find(function (lesson) {
+        return lesson.guid === lessonGuid;
+      });
+      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setGroupLesson"])(lesson));
     }
   }]);
 
@@ -53532,7 +53659,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "page journal_home"
+        className: "page journal__home"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "\u0413\u043B\u0430\u0432\u043D\u0430\u044F \u0436\u0443\u0440\u043D\u0430\u043B\u0430"));
     }
   }]);
@@ -54028,8 +54155,8 @@ function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\js\journal.js */"./resources/js/journal.js");
-module.exports = __webpack_require__(/*! C:\Users\tec2pc.karasukpk\projects\local_develop\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
+__webpack_require__(/*! D:\Workplace\college_service\college\resources\js\journal.js */"./resources/js/journal.js");
+module.exports = __webpack_require__(/*! D:\Workplace\college_service\college\resources\sass\journal.scss */"./resources/sass/journal.scss");
 
 
 /***/ })
