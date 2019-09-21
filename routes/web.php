@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/{type}/login', function() {
+    return view('welcome');
+})->where(['type' => '^[e,s]$']);
+
 Route::prefix('journal')->group(function () {
     Route::get('group/{guid}', function () {
         return view('welcome');
