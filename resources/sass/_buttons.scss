@@ -1,0 +1,20 @@
+.button {
+  background-color: #1a73e8;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: inherit;
+  padding: .5em 1.5rem .6em;
+  transition: 100ms ease-out;
+  transition-property: background-color, box-shadow;
+}
+
+.button:hover {
+  background-color: lighten(#1a73e8, 10%);
+  box-shadow: 0 .3rem 1rem rgba(#1a73e8,.4);
+}
+
+.button:active {
+  background-color: darken(#1a73e8, 5%);
+  box-shadow: none;
+}

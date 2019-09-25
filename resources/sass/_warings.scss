@@ -1,0 +1,23 @@
+.text--info {
+  color: #1a73e8;
+  font-size: 0.8em;
+  padding-left: 1.8em;
+  position: relative;
+}
+
+.text--info::before {
+  $default_size: 1.2em;
+  border: 1px solid;
+  border-radius: 50%;
+  content: "!";
+  font-weight: 600;
+  height: $default_size;
+  line-height: 1.05em;
+  left: 0;
+  padding: .1em;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  width: $default_size;
+}

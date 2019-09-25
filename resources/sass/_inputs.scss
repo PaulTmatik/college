@@ -1,0 +1,81 @@
+/* reset */
+.styled_input__input {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+/* end-reset */
+
+.styled_input {
+  --horizontal-padding: 1.2rem;
+  --vertical-padding: 1rem;
+  --border-width: 1px;
+  font-family: Roboto, sans-serif;
+  position: relative;
+  margin: 1rem;
+}
+
+.styled_input__input {
+  border: var(--border-width) solid;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: var(--vertical-padding) var(--horizontal-padding);
+  width: 100%;
+  transition: 100ms ease-in;
+  transition-property:
+    border-color,
+    box-shadow;
+}
+
+.styled_input__label {
+  cursor: text;
+  left: 0;
+  margin: calc(var(--vertical-padding) + var(--border-width)) 0;
+  padding: 0 var(--horizontal-padding);
+  position: absolute;
+  top: 0;
+  transition: 100ms ease;
+  transition-property:
+    color,
+    font-size,
+    transform;
+}
+
+.styled_input__input:valid ~
+.styled_input__label,
+.styled_input__input:focus ~
+.styled_input__label {
+  font-size: .80em;
+  margin: 0 calc(var(--horizontal-padding) * .5);
+  padding: 0 calc(var(--horizontal-padding) * .5);
+  transform: translateY(-50%);
+}
+
+/*========= theme =============*/
+.styled_input__label {
+  color: #888;
+}
+
+.styled_input__input {
+  border-color: #ccc;
+}
+
+.styled_input__input:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 1px #1a73e8;
+}
+
+.styled_input__input:focus ~
+.styled_input__label {
+  color: #1a73e8;
+}
+
+.styled_input__input,
+.styled_input__input:valid ~
+.styled_input__label,
+.styled_input__input:focus ~
+.styled_input__label {
+  background-color: #fff;
+}

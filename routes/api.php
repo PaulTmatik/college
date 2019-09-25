@@ -18,10 +18,6 @@ use Illuminate\Support\Facades\Hash;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get('/journal/teacher/{guid}/date/{date}', function (string $guid, string $date) {
     $input = [$guid, $date];
     $groups = collect(DB::select('select * from college.get_work_classes(?,?)', $input))
@@ -79,13 +75,8 @@ Route::get('/auth/employees', function () {
 
 Route::post('login', 'APILoginController@login');
 
-Route::middleware('jwt.auth')->get('/test', function(Request $request) {
-    $user = collect(
-        DB::select('select per.name_last, per.name_first, per.name_second, usr.u_guid, usr.is_needed_password_replace from organization.persons as per left join organization.users as usr on per.p_guid = usr.u_guid where per.p_guid=?',
-        [$request->user()->u_guid])
-    );
-
-    return $user;
+Route::middleware('jwt.auth')->get('/auth/user', function(Request $request) {
+    return $request->user();
 });
 
 function splitFullName($rawName) {

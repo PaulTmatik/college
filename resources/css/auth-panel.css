@@ -1,0 +1,48 @@
+.auth_panel {
+  width: 320px;
+}
+
+.auth_panel .text--info {
+  margin: .5em 1rem;
+  margin-right: 0;
+}
+
+.auth_panel__input-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth_panel__input-form .text--info {
+  margin-bottom: 1.4em;
+}
+
+.auth_panel__input-form .button {
+  align-self: flex-end;
+  margin-right: 1rem;
+}
+
+.nav-tabs {
+  display: flex;
+  margin: 0 1rem;
+}
+
+.nav-tabs__tab {
+  color: inherit;
+  flex-grow: 1;
+  padding: 1em 1rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+}
+.nav-tabs__tab.tab--active {
+  color: #1a73e8;
+  font-weight: 600;
+}
+.nav-tabs__tab.tab--active::before {
+  bottom: 0;
+  border-top: 2px solid;
+  content: '';
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
