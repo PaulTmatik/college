@@ -17,18 +17,21 @@ class TitleBar extends Component {
   render() {
     if (this.state.isRedirect) 
       return (<Redirect to="/e/login" />);
-    const { title } = this.props;
+    const { title, children } = this.props;
     return (
       <div className="title_bar">
         <div className="title_bar__app_title">
           {title ? title : null}
         </div>
-        <button
-          className="button button--bordered"
-          onClick={this.onLogoutHandler}
-        >
-          Выход
-        </button>
+        <div className="title_bar__button_group">
+          {children}
+          <button
+            className="button button--bordered"
+            onClick={this.onLogoutHandler}
+          >
+            Выход
+          </button>
+        </div>
       </div>
     );
   }

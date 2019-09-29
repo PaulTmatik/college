@@ -2013,7 +2013,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".title_bar {\r\n  align-items: center;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  padding: 1rem 1.5rem;\r\n}\r\n\r\n.title_bar__app_title {\r\n  font-weight: 300;\r\n  font-size: 2em;\r\n}", ""]);
+exports.push([module.i, ".title_bar {\r\n  align-items: center;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  padding: 1rem 1.5rem;\r\n}\r\n\r\n.title_bar__app_title {\r\n  font-weight: 300;\r\n  font-size: 2em;\r\n}\r\n\r\n.title_bar__button_group {\r\n  display: flex;\r\n}\r\n\r\n.title_bar__button_group\r\n.button:not(:last-child) {\r\n  margin-right: 1rem;\r\n}\r\n\r\n.title_bar__button_group\r\n.button {\r\n  align-items: center;\r\n  display: flex;\r\n}", ""]);
 
 // exports
 
@@ -47810,7 +47810,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53796,7 +53796,7 @@ var reciveClassesByTeacher = function reciveClassesByTeacher(tGuid, data) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: ACTIONS_NAMES, GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveClassesByTeacher, getStudentsInGroup, reciveStudentsInGroup, getUsersEmployees, checkAuthorization, authorize, logOut, reciveUsersEmployees, reciveAuthorizeUser, selectEmployeeByGuid */
+/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveClassesByTeacher, getStudentsInGroup, reciveStudentsInGroup, getUsersEmployees, checkAuthorization, authorize, logOut, reciveUsersEmployees, reciveAuthorizeUser, selectEmployeeByGuid, ACTIONS_NAMES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54514,7 +54514,21 @@ function (_Component) {
         className: "page journal__home"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TitleBar__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: "\u0413\u043B\u0430\u0432\u043D\u0430\u044F \u0436\u0443\u0440\u043D\u0430\u043B\u0430"
-      }));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button button--borderless"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        className: "svg",
+        width: "16",
+        height: "16",
+        viewBox: "0 0 16 16",
+        xmlns: "http://www.w3.org/2000/svg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        d: "M15 8V7H9V1H8v6H2v1h6v6h1V8h6z",
+        "fill-rule": "nonzero",
+        "fill-opacity": "1",
+        fill: "#000",
+        stroke: "none"
+      })))));
     }
   }]);
 
@@ -54991,15 +55005,19 @@ function (_Component) {
       if (this.state.isRedirect) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
         to: "/e/login"
       });
-      var title = this.props.title;
+      var _this$props = this.props,
+          title = _this$props.title,
+          children = _this$props.children;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "title_bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "title_bar__app_title"
-      }, title ? title : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, title ? title : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title_bar__button_group"
+      }, children, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "button button--bordered",
         onClick: this.onLogoutHandler
-      }, "\u0412\u044B\u0445\u043E\u0434"));
+      }, "\u0412\u044B\u0445\u043E\u0434")));
     }
   }, {
     key: "onLogoutHandler",

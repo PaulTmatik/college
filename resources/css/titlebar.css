@@ -9,3 +9,18 @@
   font-weight: 300;
   font-size: 2em;
 }
+
+.title_bar__button_group {
+  display: flex;
+}
+
+.title_bar__button_group
+.button:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.title_bar__button_group
+.button {
+  align-items: center;
+  display: flex;
+}

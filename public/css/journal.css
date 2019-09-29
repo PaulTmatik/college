@@ -56,6 +56,12 @@ h2 {
   box-shadow: none;
 }
 
+.button.button--borderless {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+}
+
 /* reset */
 
 .styled_input__input {
