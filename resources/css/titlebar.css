@@ -1,0 +1,11 @@
+.title_bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+}
+
+.title_bar__app_title {
+  font-weight: 300;
+  font-size: 2em;
+}

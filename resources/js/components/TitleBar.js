@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import "../../css/titlebar.css";
+
 import {logOut} from '../actions';
 
 class TitleBar extends Component {

@@ -41,6 +41,21 @@ h2 {
   box-shadow: none;
 }
 
+.button.button--bordered {
+  background-color: transparent;
+  border: 1px solid;
+  color: #666;
+}
+
+.button.button--bordered:hover {
+  box-shadow: 0 0.3rem 1rem rgba(102, 102, 102, 0.4);
+}
+
+.button.button--bordered:active {
+  background-color: #eee;
+  box-shadow: none;
+}
+
 /* reset */
 
 .styled_input__input {
