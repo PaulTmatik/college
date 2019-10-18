@@ -2,26 +2,29 @@ import { ACTIONS_NAMES } from '../actions';
 
 const authState = {
   employees: [],
-  selectedEmployeeGuid: undefined,
+  selectedEmployee: undefined,
   selectedStudentGuid: undefined,
+  latestLogger: undefined,
   selectedUser: {}
 };
 
 const authReducer = (state = authState, action) => {
-  switch(action.type) {
-    case ACTIONS_NAMES.AUTH_GET_EMPLOYEES: 
+  state.latestLogger = localStorage.getItem('latest_logger');
+  switch (action.type) {
+    case ACTIONS_NAMES.AUTH_GET_EMPLOYEES:
+      const employees = action.employees;
       return {
         ...state,
-        employees: action.employees.map(item => ({
-          empl_id: item.u_guid,
-          full_name: `${item.name_last} ${item.name_first} ${item.name_second}`,
-          position: item.employee_position
-        })),
+        employees,
+        selectedEmployee: employees.filter(
+            employee => employee.u_guid == localStorage.getItem('latest_logger'))[0] ||
+          employees.slice(0, 1)[0]
       }
     case ACTIONS_NAMES.AUTH_SELECT_EMPLOYEE:
       return {
         ...state,
-        selectedEmployee: action.employee_guid,
+        selectedEmployee: state.employees.filter(
+          employee => employee.u_guid === action.employee_guid)[0],
         selectedStudent: undefined
       }
     case ACTIONS_NAMES.AUTH_GET_USER:
