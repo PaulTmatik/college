@@ -9,9 +9,10 @@ export const GetGroupsOnPeriod = period => {
 
 export const getGroupsByTeacher = tGuid => {
   return dispatch => {
-    return window.axios.get(`/api/journal/teacher/${tGuid}/date/2019-09-01`) //30b8b233-3174-49a1-bc8f-b6ed34470d6b
-      .then(response => response.data, error => console.error('Error', error))
-      .then(data => dispatch(reciveClassesByTeacher(tGuid, data)));
+    return window.axios.get(`/api/teacher/${tGuid}/groups/todate/2019-10-19`) //30b8b233-3174-49a1-bc8f-b6ed34470d6b
+      .then(response => response.data)
+      .then(data => dispatch(reciveGroupsByTeacher(tGuid, data)))
+      .catch(error => console.error(error));
   }
 }
 
@@ -22,12 +23,11 @@ export const setGroupLesson = lesson => {
   }
 }
 
-export const reciveClassesByTeacher = (tGuid, data) => {
+export const reciveGroupsByTeacher = (tGuid, data) => {
   return {
     type: ACTIONS_NAMES.GROUPS_RECIVE_BY_TEACHER,
     tGuid,
-    classes: data.classes || [],
-    lessons: data.lessons || [],
+    workGroups: data.groups || [],
     recivedAt: Date.now()
   }
 }
