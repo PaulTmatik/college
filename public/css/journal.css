@@ -28,22 +28,24 @@ h2 {
   font-size: inherit;
   padding: 0.5em 1.5rem 0.6em;
   transition: 100ms ease-out;
-  transition-property: background-color, box-shadow;
+  transition-property: background-color, box-shadow, transform;
 }
 
 .button:hover {
   background-color: #488fed;
   box-shadow: 0 0.3rem 1rem rgba(26, 115, 232, 0.4);
+  transform: translateY(-1px);
 }
 
 .button:active {
   background-color: #1567d3;
   box-shadow: none;
+  transform: translateY(0);
 }
 
 .button.button--bordered {
   background-color: transparent;
-  border: 1px solid;
+  border: 1px solid #ddd;
   color: #666;
 }
 
