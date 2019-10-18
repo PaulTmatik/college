@@ -2,14 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import TitleBar from './TitleBar';
+import DropDownSelector, { DropDownItemAdapter } from './DropDownSelector';
+
+import { getGroupsByTeacher } from '../actions';
 
 class PageJournalHome extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+    const { dispatch, auth } = props;
+    const { selectedUser } = auth;
+    dispatch(getGroupsByTeacher(selectedUser.u_guid));
   }
+  
   render() {
+    const closest = new DropDownItemAdapter(1, "Fake lesson");
+    const { groups } = this.props;
+    console.log(groups);
     return (
       <div className="page journal__home">
         <TitleBar title="Главная журнала">
+          <DropDownSelector
+            items={[]}
+            selected={closest}
+            onSelect={this.onSelectLesson}
+          />
           <button className="button button--borderless">
             <svg
               className="svg"
@@ -20,8 +36,8 @@ class PageJournalHome extends Component {
             >
               <path
                 d="M15 8V7H9V1H8v6H2v1h6v6h1V8h6z"
-                fill-rule="nonzero"
-                fill-opacity="1"
+                fillRule="nonzero"
+                fillOpacity="1"
                 fill="#000"
                 stroke="none"
               ></path>
@@ -31,10 +47,16 @@ class PageJournalHome extends Component {
       </div>
     );
   }
+
+  onSelectLesson(lessonGuid) {
+    console.log(lessonGuid);
+  }
 }
 
 const mapStateToProps = state => ({
-  students: state.students
+  auth: state.auth,
+  groups: state.groups,
+  students: state.students,
 });
 
 export default connect(mapStateToProps)(PageJournalHome);
