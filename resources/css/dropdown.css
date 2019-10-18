@@ -3,6 +3,20 @@
   position: relative;
 }
 
+.drop-down__selector >
+.drop-down__button::after {
+  --size: .5rem;
+  border-width: 0 0 1px 1px;
+  border-style: solid;
+  content: "";
+  position: absolute;
+  height: var(--size);
+  width: var(--size);
+  transform:  translate(-150%, -60%) rotateZ(-45deg);
+  top: 50%;
+  right: 0;
+}
+
 .drop-down__pane {
   background-color: #fff;
   border-radius: 4px;
@@ -28,7 +42,7 @@
   border-radius: 4px;
   font-family: inherit;
   font-size: inherit;
-  padding: 1em 1.2em 1.1em;
+  padding: 1em 2.2em 1.1em 1.2em;
   text-align: left;
   width: 100%;
 }
