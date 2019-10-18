@@ -4,7 +4,8 @@ import { Redirect, NavLink } from 'react-router-dom';
 
 import { getUsersEmployees, selectEmployeeByGuid } from '../actions';
 
-import DropDownSelector, { DropDownItemAdapter } from './DropDownSelector';
+import DropDownSelector from './DropDownSelector';
+import { employeeDropdownAdapter } from '../helpers';
 
 import { authorize } from '../actions';
 
@@ -18,13 +19,12 @@ class PageLogin extends Component {
       password: ''
     }
 
+    const { dispatch } = props;
+    dispatch(getUsersEmployees());
+
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSelectEmployee = this.onSelectEmployee.bind(this);
     this.onAuthenticate = this.onAuthenticate.bind(this);
-  }
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getUsersEmployees());
   }
 
   render() {
@@ -63,13 +63,13 @@ class PageLogin extends Component {
   drawEmployeesForm() {
     const { auth } = this.props;
     const employees = auth.employees.map(
-      item => new DropDownItemAdapter(item.empl_id, item.full_name, item.position)
+      item => employeeDropdownAdapter(item)
     );
-    const curentEmployee = auth.selectedEmployeeGuid === undefined
-      ? employees[0]
-      : employees.filter(item => item === auth.selectedEmployeeGuid)[0];
+    let curentEmployee = null;
+    if (auth.selectedEmployee) 
+      curentEmployee = employeeDropdownAdapter(auth.selectedEmployee);
     return (
-      <div className="auth_panel__input-form">
+      <form onSubmit={this.onAuthenticate} className="auth_panel__input-form">
         <DropDownSelector
           items={employees}
           selected={curentEmployee}
@@ -77,6 +77,7 @@ class PageLogin extends Component {
         />
         <div className="styled_input">
           <input
+            autoFocus
             type="password"
             id="current_input"
             className="styled_input__input"
@@ -94,11 +95,11 @@ class PageLogin extends Component {
         <div className="text--info">Если забыли пароль, для замены обратитесь к&nbsp;системному администратору.</div>
         <button
           className="button"
-          onClick={this.onAuthenticate}
+          type="submit"
         >
           Вход
         </button>
-      </div>
+      </form>
     );
   }
 
@@ -107,7 +108,8 @@ class PageLogin extends Component {
     dispatch(selectEmployeeByGuid(employee_guid));
   }
 
-  onAuthenticate() {
+  onAuthenticate(e) {
+    e.preventDefault();
     const { auth, dispatch } = this.props;
     if (this.state.password && auth.selectedEmployee) {
       dispatch(authorize(auth.selectedEmployee, this.state.password));
