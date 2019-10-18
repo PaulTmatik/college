@@ -23,6 +23,9 @@ class TitleBar extends Component {
         <div className="title_bar__app_title">
           {title ? title : null}
         </div>
+        <div className="title_bar__addition_content">
+          
+        </div>
         <div className="title_bar__button_group">
           {children}
           <button
