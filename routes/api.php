@@ -75,8 +75,18 @@ Route::get('/auth/employees', function () {
 
 Route::post('login', 'APILoginController@login');
 
-Route::middleware('jwt.auth')->get('/auth/user', function(Request $request) {
-    return $request->user();
+Route::middleware('jwt.auth')->group(function () {
+    Route::get('/auth/user', function(Request $request) {
+        return $request->user();
+    });
+
+    Route::get('/teacher/{guid}/groups/todate/{date}', function (string $guid, string $date) {
+        $groups = collect(DB::select('select * from organization.get_actual_work_groups_by_teacher(?, ?)', [$guid, $date]));
+        return ['groups' => $groups];
+    })->where([
+        'guid' => '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$',
+        'date' => '^[0-9]{4}(-[0-9]{2}){2}$',
+    ]);
 });
 
 function splitFullName($rawName) {
