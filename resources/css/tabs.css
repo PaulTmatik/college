@@ -1,0 +1,32 @@
+.tabs {
+  overflow: hidden;
+  padding: 0 .5rem;
+}
+
+.tabs__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tabs__list_item {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  margin-right: 2px;
+}
+
+.tabs__list_item:hover {
+  border-color: #eee;
+}
+
+.tabs__list_item a {
+  color: #aaa;
+  display: block;
+  padding: 0.5em 1rem 0.6em;
+  text-decoration: none;
+}
+
+a.list_item--active {
+  display: none;
+}
