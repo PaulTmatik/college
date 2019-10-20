@@ -5,9 +5,6 @@ import { Provider } from 'react-redux';
 
 import store from '../store';
 
-import GroupList from './GroupList';
-import LessonsList from './LessonsList';
-
 import Pages from './Pages';
 
 
@@ -16,8 +13,6 @@ class Application extends Component {
     return (
       <Router>
         <>
-          {/* <GroupList />
-          <LessonsList /> */}
           <Pages />
         </>
       </Router>

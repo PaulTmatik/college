@@ -24,7 +24,7 @@ class Pages extends Component {
     return (
       <div className="application_body">
         <PrivateRoute exact path="/" component={PageJournalHome} />
-        <PrivateRoute path="/journal/group/:guid" component={PageJournalGroupDetail} />
+        <PrivateRoute path="/journal/group/:guid" component={PageJournalHome} />
         <Route path="/:type/login" component={PageLogin} />
       </div>
     );

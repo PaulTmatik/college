@@ -1,11 +1,13 @@
 import { dateDiff } from '../helpers';
 
 class Group {
-  constructor(guid, formatedName, startedAt, endedIn) {
+  constructor(guid, formatedName, priority, student_count, startedAt, endedIn) {
     this.guid = guid;
     this.formatedName = formatedName;
     this.startedAt = startedAt;
     this.endedIn = endedIn;
+    this.priority = priority;
+    this.student_count = student_count;
   }
 
   get maxCource() {

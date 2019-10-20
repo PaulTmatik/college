@@ -31,3 +31,10 @@ export const reciveGroupsByTeacher = (tGuid, data) => {
     recivedAt: Date.now()
   }
 }
+
+export const setFirstGroup = groupGuid => {
+  return {
+    type: ACTIONS_NAMES.GROUPS_SET_CURRENT,
+    groupGuid
+  }
+}
