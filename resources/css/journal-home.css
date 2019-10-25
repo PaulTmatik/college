@@ -1,0 +1,8 @@
+.journal__home {
+  display: flex;
+  flex-direction: column;
+}
+
+.subpage {
+  flex-grow: 1;
+}
