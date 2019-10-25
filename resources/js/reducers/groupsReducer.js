@@ -3,6 +3,7 @@ import Group from '../structures/Group';
 
 const baseState = {
   firstGroup: undefined,
+  firstGroupGuid: undefined,
   workGroups: [],
   groups: []
 }
@@ -25,9 +26,9 @@ const groupsReducer = (state = baseState, action) => {
         workGroups: selectedGroups || []
       };
     case ACTIONS_NAMES.GROUPS_SET_CURRENT:
-      console.log(action.groupGuid)
       return {
         ...state,
+        firstGroupGuid: action.groupGuid,
         firstGroup: state.workGroups.find(group => group.guid === action.groupGuid)
       }
     default:
