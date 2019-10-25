@@ -38,7 +38,7 @@
 
 .drop-down__button {
   background-color: transparent;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 4px;
   font-family: inherit;
   font-size: inherit;
@@ -48,7 +48,7 @@
 }
 
 .drop-down__button:hover {
-  background-color: #eee;
+  border-color: #eee;
 }
 
 .drop-down__first_line,
