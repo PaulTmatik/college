@@ -30,3 +30,5 @@ export const dateDiff = (startDate, endDate) => {
 
   return { years, months, days };
 }
+
+export const monthShortNames = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];

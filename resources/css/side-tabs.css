@@ -1,0 +1,50 @@
+.side-tabs {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5em;
+}
+
+.tabs-item__button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.side-tabs__tabs-items {
+  flex-grow: 1;
+  list-style: none;
+  margin: 0;
+  margin-top: .5rem;
+  padding: 0;
+}
+
+.side-tabs__tabs-item {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.side-tabs__tabs-item:not(:last-child)::after {
+  background-color: #ddd;
+  bottom: -.5rem;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 1.2rem;
+  position: absolute;
+  right: 1.2rem;
+}
+
+.tabs-item__button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  margin: 0 .7rem;
+  padding: .6em .6em .3em;
+}
+
+.tabs-item__button:hover {
+  border-color: #eee;
+  border-radius: 4px;
+}
+
+.tabs-item__button:active {
+  box-shadow: inset 0 .2em .5em rgba(0,0,0,.05);
+}

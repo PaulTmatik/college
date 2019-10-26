@@ -4,5 +4,6 @@
 }
 
 .subpage {
+  display: flex;
   flex-grow: 1;
 }

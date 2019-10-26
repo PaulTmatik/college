@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import DatePane from './DatePane';
+
+import "../../css/side-tabs.css";
 
 class SideTabs extends Component {
   render() {
+    const { lessons } = this.props;
+    const forCurrentLessons = lessons.lessonsByGroup
+      .filter(lesson =>
+        lesson.l_guid === lessons.selectedLesson.l_guid)
+      .sort((a, b) => {
+        if (new Date(a.lp_started_at) > new Date(b.lp_started_at))
+          return 1;
+        if (new Date(a.lp_started_at) < new Date(b.lp_started_at))
+          return -1;
+        return 0;
+      });
+    
     return (
       <div className="side-tabs">
-        <button className="side-tabs__add-button">
+        <button className="tabs-item__button">
           <svg
             className="svg"
             width="16"
@@ -22,6 +37,18 @@ class SideTabs extends Component {
             ></path>
           </svg>
         </button>
+        <ul className="side-tabs__tabs-items">
+          {forCurrentLessons.map(item => (
+            <li key={item.lp_guid} className="side-tabs__tabs-item">
+              <button className="tabs-item__button">
+                <DatePane
+                  start_date={item.lp_started_at}
+                  end_date={item.lp_ended_at}
+                />
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
