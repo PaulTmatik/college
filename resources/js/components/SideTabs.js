@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DatePane from './DatePane';
+import { setCurrentJournal } from '../actions';
 
 import "../../css/side-tabs.css";
 
 class SideTabs extends Component {
   render() {
-    const { lessons } = this.props;
-    const forCurrentLessons = lessons.lessonsByGroup
-      .filter(lesson =>
-        lesson.l_guid === lessons.selectedLesson.l_guid)
-      .sort((a, b) => {
-        if (new Date(a.lp_started_at) > new Date(b.lp_started_at))
-          return 1;
-        if (new Date(a.lp_started_at) < new Date(b.lp_started_at))
-          return -1;
-        return 0;
-      });
-    
+    const { lessons, onAddEvent } = this.props;
+    const journals = lessons.journals;
+    let currentGuid = '';
+    if (lessons.selectedJournal)
+      currentGuid = lessons.selectedJournal.lh_guid;
+
     return (
       <div className="side-tabs">
-        <button className="tabs-item__button">
+        <button
+          className="tabs-item__button"
+          onClick={onAddEvent}
+        >
           <svg
             className="svg"
             width="16"
@@ -38,12 +36,15 @@ class SideTabs extends Component {
           </svg>
         </button>
         <ul className="side-tabs__tabs-items">
-          {forCurrentLessons.map(item => (
-            <li key={item.lp_guid} className="side-tabs__tabs-item">
-              <button className="tabs-item__button">
+          {journals.map(item => (
+            <li key={item.lh_guid} className={`side-tabs__tabs-item ${(currentGuid == item.lh_guid ? 'side-tabs--active' : '')}`}>
+              <button
+                className="tabs-item__button"
+                onClick={() => this.onSelectJournal(item)}
+              >
                 <DatePane
-                  start_date={item.lp_started_at}
-                  end_date={item.lp_ended_at}
+                  forDate={item.for_date}
+                  hours={item.work_hours}
                 />
               </button>
             </li>
@@ -51,6 +52,11 @@ class SideTabs extends Component {
         </ul>
       </div>
     );
+  }
+
+  onSelectJournal(journal) {
+    const { dispatch } = this.props;
+    dispatch(setCurrentJournal(journal));
   }
 }
 

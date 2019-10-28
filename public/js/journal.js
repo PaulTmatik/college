@@ -1994,7 +1994,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".date-pane,\r\n.date-pane > time {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.date-pane > time {\r\n  margin-bottom: .8rem;\r\n}\r\n\r\n.date-pane__day {\r\n  font-size: 1.6em;\r\n  font-weight: 300;\r\n}\r\n\r\n.date-pane__month {\r\n  letter-spacing: .1em;\r\n}", ""]);
+exports.push([module.i, ".date-pane,\r\n.date-pane > time,\r\n.date-pane__work-hours {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.date-pane {\r\n  font-size: .8em;\r\n}\r\n\r\n.date-pane > time {\r\n  margin-bottom: .8rem;\r\n}\r\n\r\n.date-pane__day,\r\n.date-pane__hours {\r\n  font-size: 1.5em;\r\n  font-weight: 300;\r\n}\r\n\r\n.date-pane__month {\r\n  letter-spacing: .1em;\r\n}\r\n\r\n.date-pane__work-hours {\r\n  margin: 0.5em 0;\r\n}", ""]);
 
 // exports
 
@@ -2014,6 +2014,25 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 // module
 exports.push([module.i, ".drop-down__selector {\r\n  margin: 1em 1rem .5em;\r\n  position: relative;\r\n}\r\n\r\n.drop-down__selector >\r\n.drop-down__button::after {\r\n  --size: .5rem;\r\n  border-width: 0 0 1px 1px;\r\n  border-style: solid;\r\n  content: \"\";\r\n  position: absolute;\r\n  height: var(--size);\r\n  width: var(--size);\r\n  transform:  translate(-150%, -60%) rotateZ(-45deg);\r\n  top: 50%;\r\n  right: 0;\r\n}\r\n\r\n.drop-down__pane {\r\n  background-color: #fff;\r\n  border-radius: 4px;\r\n  display: none;\r\n  list-style: none;\r\n  margin: 0;\r\n  padding: 0;\r\n  position: absolute;\r\n  width: 100%;\r\n  z-index: 100;\r\n}\r\n\r\n.drop-down__pane.drop-down--open {\r\n  box-shadow: 0 0 3em rgba(0,0,0, .1);\r\n  display: block;\r\n  top: 0;\r\n  left: 0;\r\n}\r\n\r\n.drop-down__button {\r\n  background-color: transparent;\r\n  border: 1px solid transparent;\r\n  border-radius: 4px;\r\n  font-family: inherit;\r\n  font-size: inherit;\r\n  padding: 1em 2.2em 1.1em 1.2em;\r\n  text-align: left;\r\n  width: 100%;\r\n}\r\n\r\n.drop-down__button:hover {\r\n  border-color: #eee;\r\n}\r\n\r\n.drop-down__first_line,\r\n.drop-down__second_line {\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\r\n}\r\n\r\n.drop-down__second_line {\r\n  opacity: .5;\r\n  font-size: .9em;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/css/edit-journal-form.css":
+/*!*****************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/css/edit-journal-form.css ***!
+  \*****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".edit-journal__form {\r\n  align-items: center;\r\n  display: flex;\r\n  flex-direction: column;\r\n  flex-grow: 1;\r\n}\r\n\r\n.edit-journal__input-group {\r\n  align-items: center;\r\n  display: flex;\r\n}\r\n\r\n.edit-journal__input-group:last-child {\r\n  margin-top: 1rem;\r\n}\r\n\r\n.edit-journal--right {\r\n  justify-content: flex-end;\r\n}\r\n\r\n.edit-journal__input-group\r\n.button {\r\n  margin-right: 1rem;\r\n}\r\n\r\n.edit-journal__hours-label {\r\n  flex-grow: 1;\r\n  margin-left: 1rem;\r\n}\r\n\r\n.edit-journal__hours-input {\r\n  width: 4.2rem;\r\n}", ""]);
 
 // exports
 
@@ -2070,7 +2089,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".side-tabs {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding-top: 0.5em;\r\n}\r\n\r\n.tabs-item__button {\r\n  font-family: inherit;\r\n  font-size: inherit;\r\n}\r\n\r\n.side-tabs__tabs-items {\r\n  flex-grow: 1;\r\n  list-style: none;\r\n  margin: 0;\r\n  margin-top: .5rem;\r\n  padding: 0;\r\n}\r\n\r\n.side-tabs__tabs-item {\r\n  position: relative;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.side-tabs__tabs-item:not(:last-child)::after {\r\n  background-color: #ddd;\r\n  bottom: -.5rem;\r\n  content: \"\";\r\n  display: block;\r\n  height: 1px;\r\n  left: 1.2rem;\r\n  position: absolute;\r\n  right: 1.2rem;\r\n}\r\n\r\n.tabs-item__button {\r\n  background-color: transparent;\r\n  border: 1px solid transparent;\r\n  margin: 0 .7rem;\r\n  padding: .6em .6em .3em;\r\n}\r\n\r\n.tabs-item__button:hover {\r\n  border-color: #eee;\r\n  border-radius: 4px;\r\n}\r\n\r\n.tabs-item__button:active {\r\n  box-shadow: inset 0 .2em .5em rgba(0,0,0,.05);\r\n}", ""]);
+exports.push([module.i, ".side-tabs {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding-top: 0.5em;\r\n}\r\n\r\n.tabs-item__button {\r\n  font-family: inherit;\r\n  font-size: inherit;\r\n}\r\n\r\n.side-tabs__tabs-items {\r\n  flex-grow: 1;\r\n  list-style: none;\r\n  margin: 0;\r\n  margin-top: .5rem;\r\n  padding: 0;\r\n}\r\n\r\n.side-tabs__tabs-item {\r\n  position: relative;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.side-tabs__tabs-item:not(:last-child)::after {\r\n  background-color: #ddd;\r\n  bottom: -.5rem;\r\n  content: \"\";\r\n  display: block;\r\n  height: 1px;\r\n  left: 1.2rem;\r\n  position: absolute;\r\n  right: 1.2rem;\r\n}\r\n\r\n.tabs-item__button {\r\n  background-color: transparent;\r\n  border: 1px solid transparent;\r\n  border-radius: 4px;\r\n  margin: 0 .7rem;\r\n  padding: .6em .6em .3em;\r\n}\r\n\r\n.tabs-item__button:hover {\r\n  border-color: #eee;\r\n}\r\n\r\n.tabs-item__button:active {\r\n  box-shadow: inset 0 .2em .5em rgba(0,0,0,.05);\r\n}\r\n\r\n.side-tabs--active\r\n.tabs-item__button {\r\n  border-color: #1a73e8;\r\n  box-shadow: 0 0 0 1px #1a73e8;\r\n}", ""]);
 
 // exports
 
@@ -51129,6 +51148,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./resources/css/edit-journal-form.css":
+/*!*********************************************!*\
+  !*** ./resources/css/edit-journal-form.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--6-1!../../node_modules/postcss-loader/src??ref--6-2!./edit-journal-form.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/css/edit-journal-form.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./resources/css/journal-home.css":
 /*!****************************************!*\
   !*** ./resources/css/journal-home.css ***!
@@ -51428,7 +51477,7 @@ var setFirstGroup = function setFirstGroup(groupGuid) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveGroupsByTeacher, setFirstGroup, getStudentsInGroup, reciveStudentsInGroup, getUsersEmployees, checkAuthorization, authorize, logOut, reciveUsersEmployees, reciveAuthorizeUser, selectEmployeeByGuid, getUsedPeriodByUser, reciveUsedPeriods, getLessonsByGroupForTeacher, setCurrentLesson, ACTIONS_NAMES */
+/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveGroupsByTeacher, setFirstGroup, getStudentsInGroup, reciveStudentsInGroup, getUsersEmployees, checkAuthorization, authorize, logOut, reciveUsersEmployees, reciveAuthorizeUser, selectEmployeeByGuid, getUsedPeriodByUser, reciveUsedPeriods, getLessonsByGroupForTeacher, getJournalsByLesson, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal, ACTIONS_NAMES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51473,7 +51522,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lessonsActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lessonsActions */ "./resources/js/actions/lessonsActions.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getLessonsByGroupForTeacher", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["getLessonsByGroupForTeacher"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getJournalsByLesson", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["getJournalsByLesson"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reciveJournalsByLesson", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["reciveJournalsByLesson"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setCurrentLesson", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["setCurrentLesson"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setCurrentJournal", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["setCurrentJournal"]; });
 
 
 
@@ -51492,7 +51547,9 @@ var ACTIONS_NAMES = {
   AUTH_LOGOUT: 'AUTH_LOGOUT',
   PERIOD_GET_BY_USER: 'PERIOD_GET_BY_USER',
   LESSON_GET_BY_GROUPS_FOR_TEACHER: 'LESSON_GET_BY_GROUPS_FOR_TEACHER',
-  LESSON_SET_CURRENT: 'LESSON_SET_CURRENT'
+  LESSON_SET_CURRENT: 'LESSON_SET_CURRENT',
+  LESSON_GET_JOURNAL_BY_LESSON: 'LESSON_GET_JOURNAL_BY_LESSON',
+  LESSON_SET_CURRENT_JOURNAL: 'LESSON_SET_CURRENT_JOURNAL'
 };
 
 /***/ }),
@@ -51501,14 +51558,17 @@ var ACTIONS_NAMES = {
 /*!************************************************!*\
   !*** ./resources/js/actions/lessonsActions.js ***!
   \************************************************/
-/*! exports provided: getLessonsByGroupForTeacher, reciveGroupsByTeacher, setCurrentLesson */
+/*! exports provided: getLessonsByGroupForTeacher, getJournalsByLesson, reciveGroupsByTeacher, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLessonsByGroupForTeacher", function() { return getLessonsByGroupForTeacher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getJournalsByLesson", function() { return getJournalsByLesson; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveGroupsByTeacher", function() { return reciveGroupsByTeacher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveJournalsByLesson", function() { return reciveJournalsByLesson; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCurrentLesson", function() { return setCurrentLesson; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCurrentJournal", function() { return setCurrentJournal; });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./resources/js/actions/index.js");
 
 var getLessonsByGroupForTeacher = function getLessonsByGroupForTeacher(groupGuid, teacherGuid) {
@@ -51522,6 +51582,17 @@ var getLessonsByGroupForTeacher = function getLessonsByGroupForTeacher(groupGuid
     });
   };
 };
+var getJournalsByLesson = function getJournalsByLesson(lessonGuid, groupGuid) {
+  return function (dispatch) {
+    return window.axios.get("/api/journals/lesson/".concat(lessonGuid, "/group/").concat(groupGuid)).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      return dispatch(reciveJournalsByLesson(data));
+    })["catch"](function (error) {
+      return console.error('Get Journal By Lessons', error);
+    });
+  };
+};
 var reciveGroupsByTeacher = function reciveGroupsByTeacher(data) {
   return {
     type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_GET_BY_GROUPS_FOR_TEACHER,
@@ -51529,10 +51600,23 @@ var reciveGroupsByTeacher = function reciveGroupsByTeacher(data) {
     recivedAt: Date.now()
   };
 };
+var reciveJournalsByLesson = function reciveJournalsByLesson(data) {
+  return {
+    type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_GET_JOURNAL_BY_LESSON,
+    journals: data.journals,
+    recivedAt: Date.now()
+  };
+};
 var setCurrentLesson = function setCurrentLesson(lessonGuid) {
   return {
     type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_SET_CURRENT,
     currentLessonGuid: lessonGuid
+  };
+};
+var setCurrentJournal = function setCurrentJournal(journal) {
+  return {
+    type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_SET_CURRENT_JOURNAL,
+    currentJournal: journal
   };
 };
 
@@ -51789,27 +51873,24 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          start_date = _this$props.start_date,
-          end_date = _this$props.end_date;
+          forDate = _this$props.forDate,
+          hours = _this$props.hours;
+      var workDate = new Date(forDate);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "date-pane"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", {
-        dateTime: new Date(start_date)
+        dateTime: workDate
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "date-pane__day"
-      }, new Date(start_date).getDate()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, workDate.getDate()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "date-pane__month"
-      }, _helpers__WEBPACK_IMPORTED_MODULE_1__["monthShortNames"][new Date(start_date).getMonth()]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      }, _helpers__WEBPACK_IMPORTED_MODULE_1__["monthShortNames"][workDate.getMonth()]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "date-pane__year"
-      }, new Date(start_date).getFullYear())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("time", {
-        dateTime: new Date(end_date)
+      }, workDate.getFullYear())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "date-pane__work-hours"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "date-pane__day"
-      }, new Date(end_date).getDate()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "date-pane__month"
-      }, _helpers__WEBPACK_IMPORTED_MODULE_1__["monthShortNames"][new Date(end_date).getMonth()]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "date-pane__year"
-      }, new Date(end_date).getFullYear())));
+        className: "date-pane__hours"
+      }, hours), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u0447\u0430\u0441\u043E\u0432")));
     }
   }]);
 
@@ -51940,6 +52021,131 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/components/EditJournalForm.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/EditJournalForm.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_edit_journal_form_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css/edit-journal-form.css */ "./resources/css/edit-journal-form.css");
+/* harmony import */ var _css_edit_journal_form_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_edit_journal_form_css__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var EditJournalForm =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(EditJournalForm, _Component);
+
+  function EditJournalForm(props) {
+    var _this;
+
+    _classCallCheck(this, EditJournalForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(EditJournalForm).call(this, props));
+    _this.onSubmitForm = _this.onSubmitForm.bind(_assertThisInitialized(_this));
+    _this.onCloseFrom = _this.onCloseFrom.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(EditJournalForm, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.onSubmitForm,
+        className: "edit-journal__form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-journal__components-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "edit-journal__title"
+      }, "\u041D\u043E\u0432\u044B\u0439 \u0436\u0443\u0440\u043D\u0430\u043B"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-journal__input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "styled_input"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "edit-gournal-begin-date",
+        type: "date",
+        className: "styled_input__input"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "edit-gournal-begin-date",
+        className: "styled_input__label"
+      }, "\u041D\u0430\u0447\u0430\u043B\u043E")), " \u2013", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "styled_input"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "edit-gournal-end-date",
+        type: "date",
+        className: "styled_input__input"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "edit-gournal-end-date",
+        className: "styled_input__label"
+      }, "\u041E\u043A\u043E\u043D\u0447\u0430\u043D\u0438\u0435"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-journal__input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "edit-journal-hours-count-lbl",
+        className: "edit-journal__hours-label"
+      }, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0447\u0430\u0441\u043E\u0432 \u0432 \u043F\u0435\u0440\u0438\u043E\u0434\u0435"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "styled_input edit-journal__hours-input"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "edit-journal-hours-count-lbl",
+        type: "text",
+        className: "styled_input__input",
+        maxLength: "3",
+        defaultValue: "1"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-journal__input-group edit-journal--right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button",
+        type: "submit"
+      }, "\u041F\u043E\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button button--bordered",
+        type: "reset",
+        onClick: this.onCloseFrom
+      }, "\u041E\u0442\u043C\u0435\u043D\u0430"))));
+    }
+  }, {
+    key: "onSubmitForm",
+    value: function onSubmitForm(e) {
+      e.preventDefault();
+      this.onCloseFrom();
+    }
+  }, {
+    key: "onCloseFrom",
+    value: function onCloseFrom() {
+      var onCloseEvent = this.props.onCloseEvent;
+      onCloseEvent();
+    }
+  }]);
+
+  return EditJournalForm;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (EditJournalForm);
+
+/***/ }),
+
 /***/ "./resources/js/components/PageJournalGroupDetail.js":
 /*!***********************************************************!*\
   !*** ./resources/js/components/PageJournalGroupDetail.js ***!
@@ -52032,6 +52238,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
 /* harmony import */ var _css_journal_home_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../css/journal-home.css */ "./resources/css/journal-home.css");
 /* harmony import */ var _css_journal_home_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_css_journal_home_css__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _EditJournalForm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./EditJournalForm */ "./resources/js/components/EditJournalForm.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52061,6 +52268,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var PageJournalHome =
 /*#__PURE__*/
 function (_Component) {
@@ -52076,6 +52284,9 @@ function (_Component) {
         auth = props.auth,
         match = props.match;
     var selectedUser = auth.selectedUser;
+    _this.state = {
+      editJournalGuid: undefined
+    };
     dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_8__["getGroupsByTeacher"])(selectedUser.u_guid));
 
     if (match.params.guid !== undefined) {
@@ -52083,6 +52294,8 @@ function (_Component) {
     }
 
     _this.onSelectLesson = _this.onSelectLesson.bind(_assertThisInitialized(_this));
+    _this.onAddJournalClick = _this.onAddJournalClick.bind(_assertThisInitialized(_this));
+    _this.onCloseEditJournal = _this.onCloseEditJournal.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -52119,7 +52332,18 @@ function (_Component) {
         onSelect: this.onSelectLesson
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tabs__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "subpage"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SideTabs__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RatingJournal__WEBPACK_IMPORTED_MODULE_7__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SideTabs__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        onAddEvent: this.onAddJournalClick
+      }), this.switchSubpagesType()));
+    }
+  }, {
+    key: "switchSubpagesType",
+    value: function switchSubpagesType() {
+      var editJournalGuid = this.state.editJournalGuid;
+      if (editJournalGuid === null || editJournalGuid) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_EditJournalForm__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        onCloseEvent: this.onCloseEditJournal
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RatingJournal__WEBPACK_IMPORTED_MODULE_7__["default"], null);
     }
   }, {
     key: "onSelectLesson",
@@ -52134,6 +52358,20 @@ function (_Component) {
           dispatch = _this$props2.dispatch,
           match = _this$props2.match;
       if (match.params.guid && match.params.guid.length > 35) dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_8__["setFirstGroup"])(match.params.guid));
+    }
+  }, {
+    key: "onAddJournalClick",
+    value: function onAddJournalClick() {
+      this.setState({
+        editJournalGuid: null
+      });
+    }
+  }, {
+    key: "onCloseEditJournal",
+    value: function onCloseEditJournal() {
+      this.setState({
+        editJournalGuid: undefined
+      });
     }
   }]);
 
@@ -52499,7 +52737,7 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rating-journal"
-      });
+      }, "this is rating journal");
     }
   }]);
 
@@ -52523,8 +52761,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _DatePane__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DatePane */ "./resources/js/components/DatePane.js");
-/* harmony import */ var _css_side_tabs_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../css/side-tabs.css */ "./resources/css/side-tabs.css");
-/* harmony import */ var _css_side_tabs_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_side_tabs_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+/* harmony import */ var _css_side_tabs_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../css/side-tabs.css */ "./resources/css/side-tabs.css");
+/* harmony import */ var _css_side_tabs_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_css_side_tabs_css__WEBPACK_IMPORTED_MODULE_4__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52548,6 +52787,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var SideTabs =
 /*#__PURE__*/
 function (_Component) {
@@ -52562,18 +52802,19 @@ function (_Component) {
   _createClass(SideTabs, [{
     key: "render",
     value: function render() {
-      var lessons = this.props.lessons;
-      var forCurrentLessons = lessons.lessonsByGroup.filter(function (lesson) {
-        return lesson.l_guid === lessons.selectedLesson.l_guid;
-      }).sort(function (a, b) {
-        if (new Date(a.lp_started_at) > new Date(b.lp_started_at)) return 1;
-        if (new Date(a.lp_started_at) < new Date(b.lp_started_at)) return -1;
-        return 0;
-      });
+      var _this = this;
+
+      var _this$props = this.props,
+          lessons = _this$props.lessons,
+          onAddEvent = _this$props.onAddEvent;
+      var journals = lessons.journals;
+      var currentGuid = '';
+      if (lessons.selectedJournal) currentGuid = lessons.selectedJournal.lh_guid;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "side-tabs"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "tabs-item__button"
+        className: "tabs-item__button",
+        onClick: onAddEvent
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         className: "svg",
         width: "16",
@@ -52588,17 +52829,26 @@ function (_Component) {
         stroke: "none"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "side-tabs__tabs-items"
-      }, forCurrentLessons.map(function (item) {
+      }, journals.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: item.lp_guid,
-          className: "side-tabs__tabs-item"
+          key: item.lh_guid,
+          className: "side-tabs__tabs-item ".concat(currentGuid == item.lh_guid ? 'side-tabs--active' : '')
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "tabs-item__button"
+          className: "tabs-item__button",
+          onClick: function onClick() {
+            return _this.onSelectJournal(item);
+          }
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DatePane__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          start_date: item.lp_started_at,
-          end_date: item.lp_ended_at
+          forDate: item.for_date,
+          hours: item.work_hours
         })));
       })));
+    }
+  }, {
+    key: "onSelectJournal",
+    value: function onSelectJournal(journal) {
+      var dispatch = this.props.dispatch;
+      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["setCurrentJournal"])(journal));
     }
   }]);
 
@@ -53005,6 +53255,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/middlewares/getJurnalsByLessons.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/middlewares/getJurnalsByLessons.js ***!
+  \*********************************************************/
+/*! exports provided: getJournalsByLessons */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getJournalsByLessons", function() { return getJournalsByLessons; });
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+
+var getJournalsByLessons = function getJournalsByLessons(store) {
+  return function (next) {
+    return function (action) {
+      var result = next(action);
+
+      var _store$getState = store.getState(),
+          lessons = _store$getState.lessons,
+          groups = _store$getState.groups;
+
+      if (action.type === _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_GET_BY_GROUPS_FOR_TEACHER || action.type === _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_SET_CURRENT) {
+        store.dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_0__["getJournalsByLesson"])(lessons.selectedLesson.l_guid, groups.firstGroupGuid));
+      }
+
+      return result;
+    };
+  };
+};
+
+/***/ }),
+
 /***/ "./resources/js/middlewares/getLessonsForGroup.js":
 /*!********************************************************!*\
   !*** ./resources/js/middlewares/getLessonsForGroup.js ***!
@@ -53041,7 +53323,7 @@ var getLessonsForGroup = function getLessonsForGroup(store) {
 /*!*******************************************!*\
   !*** ./resources/js/middlewares/index.js ***!
   \*******************************************/
-/*! exports provided: setDefaultGroup, getLessonsForGroup */
+/*! exports provided: setDefaultGroup, getLessonsForGroup, getJournalsByLessons */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53051,6 +53333,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _getLessonsForGroup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getLessonsForGroup */ "./resources/js/middlewares/getLessonsForGroup.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getLessonsForGroup", function() { return _getLessonsForGroup__WEBPACK_IMPORTED_MODULE_1__["getLessonsForGroup"]; });
+
+/* harmony import */ var _getJurnalsByLessons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getJurnalsByLessons */ "./resources/js/middlewares/getJurnalsByLessons.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getJournalsByLessons", function() { return _getJurnalsByLessons__WEBPACK_IMPORTED_MODULE_2__["getJournalsByLessons"]; });
+
 
 
 
@@ -53266,7 +53552,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var baseState = {
   lessonsByGroup: [],
   selectedLesson: undefined,
-  selectionLessons: []
+  selectionLessons: [],
+  journals: [],
+  selectedJournal: undefined
 };
 
 var lessonsReducer = function lessonsReducer() {
@@ -53312,11 +53600,22 @@ var lessonsReducer = function lessonsReducer() {
         selectionLessons: selectionLessons
       });
 
+    case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_GET_JOURNAL_BY_LESSON:
+      return _objectSpread({}, state, {
+        journals: action.journals || [],
+        selectedJournal: action.journals.slice(0, 1)[0]
+      });
+
     case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_SET_CURRENT:
       return _objectSpread({}, state, {
         selectedLesson: state.lessonsByGroup.find(function (lesson) {
           return lesson.lp_guid === action.currentLessonGuid;
         })
+      });
+
+    case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_SET_CURRENT_JOURNAL:
+      return _objectSpread({}, state, {
+        selectedJournal: action.currentJournal
       });
 
     default:
@@ -53390,7 +53689,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["setDefaultGroup"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["getLessonsForGroup"]));
+var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["setDefaultGroup"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["getLessonsForGroup"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["getJournalsByLessons"]));
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),

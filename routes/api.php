@@ -88,10 +88,18 @@ Route::middleware('jwt.auth')->group(function () {
         'date' => '^[0-9]{4}(-[0-9]{2}){2}$',
     ]);
 
-    Route::get('teacher/{tguid}/group/{gguid}', function (string $tguid, string $gguid) {
+    Route::get('/teacher/{tguid}/group/{gguid}', function (string $tguid, string $gguid) {
         $lessons = collect(DB::select('select * from organization.get_work_lessons_for_group(?, ?)', [$gguid, $tguid]));
         return ['lessons' => $lessons];
     });
+
+    Route::get('/journals/lesson/{lguid}/group/{gguid}', function (string $lguid, string $gguid) {
+        $journals = collect(DB::select('select * from organization.get_journals_by_group_and_lesson(?,?) order by for_date desc', [$lguid, $gguid]));
+        return ['journals' => $journals];
+    })->where([
+        'lguid' => '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$',
+        'gguid' => '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$',
+    ]);
 });
 
 function splitFullName($rawName) {

@@ -5,32 +5,27 @@ import "../../css/date-pane.css";
 
 class DatePane extends Component {
   render() {
-    const { start_date, end_date } = this.props;
-    
+    const { forDate, hours } = this.props;
+    const workDate = new Date(forDate);
     return (
       <div className="date-pane">
-        <time dateTime={new Date(start_date)}>
+        <time dateTime={workDate}>
           <span className="date-pane__day">
-            {(new Date(start_date)).getDate()}
+            {workDate.getDate()}
           </span>
           <span className="date-pane__month">
-            {monthShortNames[(new Date(start_date)).getMonth()]}
+            {monthShortNames[workDate.getMonth()]}
           </span>
           <span className="date-pane__year">
-            {(new Date(start_date)).getFullYear()}
+            {workDate.getFullYear()}
           </span>
         </time>
-        <time dateTime={new Date(end_date)}>
-          <span className="date-pane__day">
-            {(new Date(end_date)).getDate()}
+        <div className="date-pane__work-hours">
+          <span className="date-pane__hours">
+            {hours}
           </span>
-          <span className="date-pane__month">
-            {monthShortNames[(new Date(end_date)).getMonth()]}
-          </span>
-          <span className="date-pane__year">
-            {(new Date(end_date)).getFullYear()}
-          </span>
-        </time>
+          <span>часов</span>
+        </div>
       </div>
     );
   }

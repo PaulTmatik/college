@@ -6,21 +6,28 @@ import TitleBar from './TitleBar';
 import DropDownSelector, { DropDownItemAdapter } from './DropDownSelector';
 import Tabs from './Tabs';
 import SideTabs from './SideTabs';
+import RatingJournal from './RatingJournal';
 
 import { getGroupsByTeacher, setCurrentLesson, setFirstGroup } from '../actions';
 
 import "../../css/journal-home.css";
+import EditJournalForm from './EditJournalForm';
 
 class PageJournalHome extends Component {
   constructor(props) {
     super(props);
     const { dispatch, auth, match } = props;
     const { selectedUser } = auth;
+    this.state = {
+      editJournalGuid: undefined
+    };
     dispatch(getGroupsByTeacher(selectedUser.u_guid));
     if (match.params.guid !== undefined) {
       dispatch(setFirstGroup(match.params.guid))
     }
     this.onSelectLesson = this.onSelectLesson.bind(this);
+    this.onAddJournalClick = this.onAddJournalClick.bind(this);
+    this.onCloseEditJournal = this.onCloseEditJournal.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -55,10 +62,19 @@ class PageJournalHome extends Component {
         </TitleBar>
         <Tabs />
         <div className="subpage">
-          <SideTabs />
+          <SideTabs onAddEvent={this.onAddJournalClick} />
+          {this.switchSubpagesType()}
         </div>
       </div>
     );
+  }
+
+  switchSubpagesType() {
+    const { editJournalGuid } = this.state;
+    if (editJournalGuid === null || editJournalGuid)
+      return <EditJournalForm onCloseEvent={this.onCloseEditJournal} />;
+
+    return <RatingJournal />;
   }
 
   onSelectLesson(lessonGuid) {
@@ -70,6 +86,13 @@ class PageJournalHome extends Component {
     const { dispatch, match } = this.props;
     if (match.params.guid && match.params.guid.length > 35)
       dispatch(setFirstGroup(match.params.guid));
+  }
+  onAddJournalClick() {
+    this.setState({ editJournalGuid: null });
+  }
+
+  onCloseEditJournal() {
+    this.setState({ editJournalGuid: undefined });
   }
 }
 

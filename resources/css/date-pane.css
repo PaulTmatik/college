@@ -1,18 +1,28 @@
 .date-pane,
-.date-pane > time {
+.date-pane > time,
+.date-pane__work-hours {
   display: flex;
   flex-direction: column;
+}
+
+.date-pane {
+  font-size: .8em;
 }
 
 .date-pane > time {
   margin-bottom: .8rem;
 }
 
-.date-pane__day {
-  font-size: 1.6em;
+.date-pane__day,
+.date-pane__hours {
+  font-size: 1.5em;
   font-weight: 300;
 }
 
 .date-pane__month {
   letter-spacing: .1em;
+}
+
+.date-pane__work-hours {
+  margin: 0.5em 0;
 }

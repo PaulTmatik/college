@@ -1,0 +1,33 @@
+.edit-journal__form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.edit-journal__input-group {
+  align-items: center;
+  display: flex;
+}
+
+.edit-journal__input-group:last-child {
+  margin-top: 1rem;
+}
+
+.edit-journal--right {
+  justify-content: flex-end;
+}
+
+.edit-journal__input-group
+.button {
+  margin-right: 1rem;
+}
+
+.edit-journal__hours-label {
+  flex-grow: 1;
+  margin-left: 1rem;
+}
+
+.edit-journal__hours-input {
+  width: 4.2rem;
+}
