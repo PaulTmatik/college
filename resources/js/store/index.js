@@ -2,15 +2,16 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducers from '../reducers';
 
-import { setDefaultGroup, getLessonsForGroup, getJournalsByLessons } from '../middlewares';
+import { setDefaultGroup, getLessonsForGroup, getJournalsByLessons, getStudentsInJournal } from '../middlewares';
 
 const store = createStore(
   rootReducers,
   applyMiddleware(
-    thunk, 
+    thunk,
     setDefaultGroup,
     getLessonsForGroup,
-    getJournalsByLessons
+    getJournalsByLessons,
+    getStudentsInJournal
   )
 );
 

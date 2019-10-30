@@ -1,0 +1,41 @@
+.rating-journal__item {
+  display: flex;
+  padding: 0.3rem;
+  position: relative;
+}
+
+.journal-item__student {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 270px;
+}
+
+.rating-journal__item::before {
+  counter-increment: list;
+  content: counter(list)'.';
+  left: -.4rem;
+  position: absolute;
+  transform: translateX(-100%);
+}
+
+.journal-item__rating {
+  align-items: center;
+  display: flex;
+}
+
+.journal-item__input {
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  width: 4ch;
+}
+
+.journal-item__calc-value {
+  text-align: right;
+  width: 6ch;
+}

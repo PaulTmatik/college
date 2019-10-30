@@ -2051,7 +2051,26 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".journal__home {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.subpage {\r\n  display: flex;\r\n  flex-grow: 1;\r\n}", ""]);
+exports.push([module.i, ".journal__home {\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.subpage {\r\n  display: flex;\r\n  flex-grow: 1;\r\n  overflow: hidden;\r\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/css/rating-journal-item.css":
+/*!*******************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./resources/css/rating-journal-item.css ***!
+  \*******************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".rating-journal__item {\r\n  display: flex;\r\n  padding: 0.3rem;\r\n  position: relative;\r\n}\r\n\r\n.journal-item__student {\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n  white-space: nowrap;\r\n  width: 270px;\r\n}\r\n\r\n.rating-journal__item::before {\r\n  counter-increment: list;\r\n  content: counter(list)'.';\r\n  left: -.4rem;\r\n  position: absolute;\r\n  transform: translateX(-100%);\r\n}\r\n\r\n.journal-item__rating {\r\n  align-items: center;\r\n  display: flex;\r\n}\r\n\r\n.journal-item__input {\r\n  background-color: transparent;\r\n  border: none;\r\n  font-size: inherit;\r\n  font-family: inherit;\r\n  margin: 0;\r\n  padding: 0;\r\n  text-align: right;\r\n  width: 4ch;\r\n}\r\n\r\n.journal-item__calc-value {\r\n  text-align: right;\r\n  width: 6ch;\r\n}", ""]);
 
 // exports
 
@@ -2070,7 +2089,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".rating-journal {\r\n  flex-grow: 1;\r\n}", ""]);
+exports.push([module.i, ".rating-journal {\r\n  counter-reset: list;\r\n  flex-grow: 1;\r\n  overflow-x: hidden;\r\n}", ""]);
 
 // exports
 
@@ -2108,7 +2127,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".tabs {\r\n  overflow: hidden;\r\n  padding: 0 .5rem;\r\n}\r\n\r\n.tabs__list {\r\n  display: flex;\r\n  margin: 0;\r\n  padding: 0;\r\n  list-style: none;\r\n}\r\n\r\n.tabs__list_item {\r\n  border: 1px solid transparent;\r\n  border-radius: 4px;\r\n  margin-right: 2px;\r\n}\r\n\r\n.tabs__list_item:hover {\r\n  border-color: #eee;\r\n}\r\n\r\n.tabs__list_item a {\r\n  color: #aaa;\r\n  display: block;\r\n  padding: 0.5em 1rem 0.6em;\r\n  text-decoration: none;\r\n}\r\n\r\na.list_item--active {\r\n  display: none;\r\n}", ""]);
+exports.push([module.i, ".tabs {\r\n  overflow: hidden;\r\n  padding: .3rem .5rem;\r\n}\r\n\r\n.tabs__list {\r\n  display: flex;\r\n  margin: 0;\r\n  padding: 0;\r\n  list-style: none;\r\n}\r\n\r\n.tabs__list_item {\r\n  border: 1px solid transparent;\r\n  border-radius: 4px;\r\n  margin-right: 2px;\r\n}\r\n\r\n.tabs__list_item:hover {\r\n  border-color: #eee;\r\n}\r\n\r\n.tabs__list_item a {\r\n  color: #aaa;\r\n  display: block;\r\n  padding: 0.5em 1rem 0.6em;\r\n  text-decoration: none;\r\n}\r\n\r\na.list_item--active {\r\n  display: none;\r\n}", ""]);
 
 // exports
 
@@ -51208,6 +51227,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./resources/css/rating-journal-item.css":
+/*!***********************************************!*\
+  !*** ./resources/css/rating-journal-item.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--6-1!../../node_modules/postcss-loader/src??ref--6-2!./rating-journal-item.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/css/rating-journal-item.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./resources/css/rating-journal.css":
 /*!******************************************!*\
   !*** ./resources/css/rating-journal.css ***!
@@ -51477,7 +51526,7 @@ var setFirstGroup = function setFirstGroup(groupGuid) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveGroupsByTeacher, setFirstGroup, getStudentsInGroup, reciveStudentsInGroup, getUsersEmployees, checkAuthorization, authorize, logOut, reciveUsersEmployees, reciveAuthorizeUser, selectEmployeeByGuid, getUsedPeriodByUser, reciveUsedPeriods, getLessonsByGroupForTeacher, getJournalsByLesson, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal, ACTIONS_NAMES */
+/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveGroupsByTeacher, setFirstGroup, getStudentsInGroup, reciveStudentsInGroup, getStudnetsInJournalByGroup, reciveStudnetsInJournalByGroup, getUsersEmployees, checkAuthorization, authorize, logOut, reciveUsersEmployees, reciveAuthorizeUser, selectEmployeeByGuid, getUsedPeriodByUser, reciveUsedPeriods, getLessonsByGroupForTeacher, getJournalsByLesson, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal, ACTIONS_NAMES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51498,6 +51547,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getStudentsInGroup", function() { return _studentsActions__WEBPACK_IMPORTED_MODULE_1__["getStudentsInGroup"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reciveStudentsInGroup", function() { return _studentsActions__WEBPACK_IMPORTED_MODULE_1__["reciveStudentsInGroup"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getStudnetsInJournalByGroup", function() { return _studentsActions__WEBPACK_IMPORTED_MODULE_1__["getStudnetsInJournalByGroup"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reciveStudnetsInJournalByGroup", function() { return _studentsActions__WEBPACK_IMPORTED_MODULE_1__["reciveStudnetsInJournalByGroup"]; });
 
 /* harmony import */ var _authActions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./authActions */ "./resources/js/actions/authActions.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getUsersEmployees", function() { return _authActions__WEBPACK_IMPORTED_MODULE_2__["getUsersEmployees"]; });
@@ -51541,6 +51594,7 @@ var ACTIONS_NAMES = {
   GROUPS_GET_BY_TEACHER: 'GROUPS_GET_BY_TEACHER',
   GROUPS_SET_CURRENT: 'GROUPS_SET_CURRENT',
   STUDENTS_GET_IN_GROUP: 'STUDENTS_GET_IN_GROUP',
+  STUDENTS_IN_JOURNAL_BY_GROUP: 'STUDENTS_IN_JOURNAL_BY_GROUP',
   AUTH_GET_EMPLOYEES: 'AUTH_GET_EMPLOYEES',
   AUTH_SELECT_EMPLOYEE: 'AUTH_SELECT_EMPLOYEE',
   AUTH_GET_USER: 'AUTH_GET_USER',
@@ -51660,13 +51714,15 @@ var reciveUsedPeriods = function reciveUsedPeriods(data) {
 /*!*************************************************!*\
   !*** ./resources/js/actions/studentsActions.js ***!
   \*************************************************/
-/*! exports provided: getStudentsInGroup, reciveStudentsInGroup */
+/*! exports provided: getStudentsInGroup, reciveStudentsInGroup, getStudnetsInJournalByGroup, reciveStudnetsInJournalByGroup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStudentsInGroup", function() { return getStudentsInGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveStudentsInGroup", function() { return reciveStudentsInGroup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStudnetsInJournalByGroup", function() { return getStudnetsInJournalByGroup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveStudnetsInJournalByGroup", function() { return reciveStudnetsInJournalByGroup; });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./resources/js/actions/index.js");
 
 var getStudentsInGroup = function getStudentsInGroup(groupGuid) {
@@ -51684,6 +51740,24 @@ var reciveStudentsInGroup = function reciveStudentsInGroup(groupGuid, data) {
   return {
     type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].STUDENTS_GET_IN_GROUP,
     groupGuid: groupGuid,
+    students: data.students || [],
+    recivedAt: Date.now()
+  };
+};
+var getStudnetsInJournalByGroup = function getStudnetsInJournalByGroup(lhGuid, gGuid) {
+  return function (dispatch) {
+    return window.axios.get("/api/journal/lh/".concat(lhGuid, "/group/").concat(gGuid)).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      return dispatch(reciveStudnetsInJournalByGroup(data));
+    })["catch"](function (error) {
+      return console.error('Get Students In Journal By Group', error);
+    });
+  };
+};
+var reciveStudnetsInJournalByGroup = function reciveStudnetsInJournalByGroup(data) {
+  return {
+    type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].STUDENTS_IN_JOURNAL_BY_GROUP,
     students: data.students || [],
     recivedAt: Date.now()
   };
@@ -52698,8 +52772,10 @@ var mapStateToProps = function mapStateToProps(state) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _css_rating_journal_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css/rating-journal.css */ "./resources/css/rating-journal.css");
-/* harmony import */ var _css_rating_journal_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_rating_journal_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _css_rating_journal_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../css/rating-journal.css */ "./resources/css/rating-journal.css");
+/* harmony import */ var _css_rating_journal_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_rating_journal_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _RatingJournalItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RatingJournalItem */ "./resources/js/components/RatingJournalItem.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52721,6 +52797,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var RatingJournal =
 /*#__PURE__*/
 function (_Component) {
@@ -52735,16 +52813,164 @@ function (_Component) {
   _createClass(RatingJournal, [{
     key: "render",
     value: function render() {
+      var students = this.props.students;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rating-journal"
-      }, "this is rating journal");
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
+        className: "rating-journal__class-list"
+      }, students.inSelectedGroup.map(function (student) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RatingJournalItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          key: student.student.guid,
+          student: student.student,
+          rating: student.rating
+        });
+      })));
     }
   }]);
 
   return RatingJournal;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (RatingJournal);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    students: state.students
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(RatingJournal));
+
+/***/ }),
+
+/***/ "./resources/js/components/RatingJournalItem.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/RatingJournalItem.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _css_rating_journal_item_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css/rating-journal-item.css */ "./resources/css/rating-journal-item.css");
+/* harmony import */ var _css_rating_journal_item_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_rating_journal_item_css__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var RatingGournalItem =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(RatingGournalItem, _Component);
+
+  function RatingGournalItem(props) {
+    var _this;
+
+    _classCallCheck(this, RatingGournalItem);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RatingGournalItem).call(this, props));
+    _this.state = {
+      rating: props.rating
+    };
+    _this.onChangeRating = _this.onChangeRating.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(RatingGournalItem, [{
+    key: "render",
+    value: function render() {
+      var student = this.props.student;
+      var rating = this.state.rating;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "rating-journal__item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "journal-item__student"
+      }, student.fullName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "journal-item__rating"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "journal-item__input",
+        onChange: this.onChangeRating,
+        value: rating.avg_eval,
+        "data-type": "avg_eval"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "journal-item__calc-value"
+      }, Number(rating.evaluation).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "journal-item__input",
+        onChange: this.onChangeRating,
+        value: rating.avg_test,
+        "data-type": "avg_test"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "journal-item__calc-value"
+      }, Number(rating.testEvaluation).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "journal-item__input",
+        onChange: this.onChangeRating,
+        value: rating.visit_count,
+        "data-type": "visit_count"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "journal-item__calc-value"
+      }, Number(rating.visited).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "journal-item__input",
+        onChange: this.onChangeRating,
+        value: rating.without_delay,
+        "data-type": "without_delay"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "journal-item__calc-value"
+      }, Number(rating.withoutDelayed).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "journal-item__input",
+        onChange: this.onChangeRating,
+        value: rating.eval_count,
+        "data-type": "eval_count"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "journal-item__calc-value"
+      }, Number(rating.evaluationStats).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "journal-item__input",
+        onChange: this.onChangeRating,
+        value: rating.outclass,
+        "data-type": "outclass"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "journal-item__calc-value"
+      }, Number(rating.outclassWork).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "journal-item__calc-value"
+      }, Number(rating.total).toFixed(2))));
+    }
+  }, {
+    key: "onChangeRating",
+    value: function onChangeRating(e) {
+      var rating = this.state.rating;
+      rating[e.target.dataset.type] = e.target.value;
+      this.setState({
+        rating: rating
+      });
+    }
+  }]);
+
+  return RatingGournalItem;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (RatingGournalItem);
 
 /***/ }),
 
@@ -53319,11 +53545,43 @@ var getLessonsForGroup = function getLessonsForGroup(store) {
 
 /***/ }),
 
+/***/ "./resources/js/middlewares/getStudentsInJournal.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/middlewares/getStudentsInJournal.js ***!
+  \**********************************************************/
+/*! exports provided: getStudentsInJournal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStudentsInJournal", function() { return getStudentsInJournal; });
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+
+var getStudentsInJournal = function getStudentsInJournal(store) {
+  return function (next) {
+    return function (action) {
+      var result = next(action);
+
+      var _store$getState = store.getState(),
+          groups = _store$getState.groups,
+          lessons = _store$getState.lessons;
+
+      if (action.type === _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_SET_CURRENT_JOURNAL || action.type === _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_GET_JOURNAL_BY_LESSON) {
+        if (lessons.selectedJournal !== undefined) store.dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_0__["getStudnetsInJournalByGroup"])(lessons.selectedJournal.lh_guid, groups.firstGroupGuid));
+      }
+
+      return result;
+    };
+  };
+};
+
+/***/ }),
+
 /***/ "./resources/js/middlewares/index.js":
 /*!*******************************************!*\
   !*** ./resources/js/middlewares/index.js ***!
   \*******************************************/
-/*! exports provided: setDefaultGroup, getLessonsForGroup, getJournalsByLessons */
+/*! exports provided: setDefaultGroup, getLessonsForGroup, getJournalsByLessons, getStudentsInJournal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -53336,6 +53594,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _getJurnalsByLessons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getJurnalsByLessons */ "./resources/js/middlewares/getJurnalsByLessons.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getJournalsByLessons", function() { return _getJurnalsByLessons__WEBPACK_IMPORTED_MODULE_2__["getJournalsByLessons"]; });
+
+/* harmony import */ var _getStudentsInJournal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getStudentsInJournal */ "./resources/js/middlewares/getStudentsInJournal.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getStudentsInJournal", function() { return _getStudentsInJournal__WEBPACK_IMPORTED_MODULE_3__["getStudentsInJournal"]; });
+
 
 
 
@@ -53638,6 +53900,7 @@ var lessonsReducer = function lessonsReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
 /* harmony import */ var _structures_Student__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../structures/Student */ "./resources/js/structures/Student.js");
+/* harmony import */ var _structures_Rating__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../structures/Rating */ "./resources/js/structures/Rating.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -53646,9 +53909,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var baseState = {
   selected: undefined,
-  all: []
+  inSelectedGroup: []
 };
 
 var studentsReducer = function studentsReducer() {
@@ -53656,10 +53920,13 @@ var studentsReducer = function studentsReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].STUDENTS_GET_IN_GROUP:
+    case _actions__WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].STUDENTS_IN_JOURNAL_BY_GROUP:
       return _objectSpread({}, state, {
-        all: action.students.map(function (st) {
-          return new _structures_Student__WEBPACK_IMPORTED_MODULE_1__["default"](st.guid, st.full_name[0], st.full_name[1], st.full_name[2], st.gender, new Date(st.birth_at), new Date(st.entred_at), st.ended_in === null ? null : new Date(st.ended_in));
+        inSelectedGroup: action.students.map(function (st) {
+          return {
+            student: new _structures_Student__WEBPACK_IMPORTED_MODULE_1__["default"](st.s_guid, st.name_last, st.name_first, st.name_second, st.gender, new Date(st.birth_at)),
+            rating: new _structures_Rating__WEBPACK_IMPORTED_MODULE_2__["default"](st.avg_evaluation, st.abg_test_evaluation, st.visit_count, st.without_delay_count, st.evaluation_count, st.outclass_work_count, st.lost_hours)
+          };
         })
       });
 
@@ -53689,7 +53956,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["setDefaultGroup"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["getLessonsForGroup"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["getJournalsByLessons"]));
+var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["setDefaultGroup"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["getLessonsForGroup"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["getJournalsByLessons"], _middlewares__WEBPACK_IMPORTED_MODULE_3__["getStudentsInJournal"]));
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),
@@ -53787,6 +54054,85 @@ function () {
 
 /***/ }),
 
+/***/ "./resources/js/structures/Rating.js":
+/*!*******************************************!*\
+  !*** ./resources/js/structures/Rating.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Rating =
+/*#__PURE__*/
+function () {
+  function Rating(avg_eval, avg_test, visit_count, without_delay, eval_count, outclass, lost_hours) {
+    _classCallCheck(this, Rating);
+
+    this.avg_eval = avg_eval;
+    this.avg_test = avg_test;
+    this.visit_count = visit_count;
+    this.without_delay = without_delay;
+    this.eval_count = eval_count;
+    this.outclass = outclass;
+    this.lost_hours = lost_hours;
+  }
+
+  _createClass(Rating, [{
+    key: "cup",
+    value: function cup(cupValue, maxCup) {
+      if (cupValue < maxCup) return cupValue;else return maxCup;
+    }
+  }, {
+    key: "evaluation",
+    get: function get() {
+      return this.avg_eval * 5;
+    }
+  }, {
+    key: "testEvaluation",
+    get: function get() {
+      return this.avg_test * 9;
+    }
+  }, {
+    key: "visited",
+    get: function get() {
+      return this.visit_count / this.lost_hours * 10;
+    }
+  }, {
+    key: "withoutDelayed",
+    get: function get() {
+      return this.without_delay / this.lost_hours * 5;
+    }
+  }, {
+    key: "evaluationStats",
+    get: function get() {
+      return this.cup(this.eval_count / (this.lost_hours * 0.3), 1) * 10;
+    }
+  }, {
+    key: "outclassWork",
+    get: function get() {
+      return this.outclass;
+    }
+  }, {
+    key: "total",
+    get: function get() {
+      return this.evaluation + this.testEvaluation + this.visited + this.withoutDelayed + this.evaluationStats + this.outclassWork;
+    }
+  }]);
+
+  return Rating;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Rating);
+
+/***/ }),
+
 /***/ "./resources/js/structures/Student.js":
 /*!********************************************!*\
   !*** ./resources/js/structures/Student.js ***!
@@ -53808,7 +54154,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var Student =
 /*#__PURE__*/
 function () {
-  function Student(guid, lastName, firstName, secondName, gender, birthAt, startedAt, endingIn) {
+  function Student(guid, lastName, firstName, secondName, gender, birthAt) {
     _classCallCheck(this, Student);
 
     this.guid = guid;
@@ -53817,8 +54163,6 @@ function () {
     this.secondName = secondName;
     this.gender = gender;
     this.birthAt = birthAt;
-    this.startedAt = startedAt;
-    this.endingIn = endingIn;
     this.groups = [];
   }
 

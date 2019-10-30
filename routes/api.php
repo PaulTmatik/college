@@ -100,6 +100,14 @@ Route::middleware('jwt.auth')->group(function () {
         'lguid' => '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$',
         'gguid' => '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$',
     ]);
+
+    Route::get('/journal/lh/{lhGuid}/group/{gGuid}', function (string $lhGuid, string $gGuid) {
+        $students = collect(DB::select('select * from organization.get_actual_rating_by_group(?, ?) order by name_last', [$lhGuid, $gGuid]));
+        return ['students' => $students];
+    })->where([
+        'lhGuid' => '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$',
+        'gGuid' => '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$',
+    ]);
 });
 
 function splitFullName($rawName) {

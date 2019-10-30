@@ -14,3 +14,18 @@ export const reciveStudentsInGroup = (groupGuid, data) => ({
   students: data.students || [],
   recivedAt: Date.now()
 });
+
+export const getStudnetsInJournalByGroup = (lhGuid, gGuid) => {
+  return dispatch => {
+    return window.axios.get(`/api/journal/lh/${lhGuid}/group/${gGuid}`)
+      .then(response => response.data)
+      .then(data => dispatch(reciveStudnetsInJournalByGroup(data)))
+      .catch(error => console.error('Get Students In Journal By Group', error));
+  }
+}
+
+export const reciveStudnetsInJournalByGroup = data => ({
+  type: ACTIONS_NAMES.STUDENTS_IN_JOURNAL_BY_GROUP,
+  students: data.students || [],
+  recivedAt: Date.now()
+});
