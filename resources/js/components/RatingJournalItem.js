@@ -6,6 +6,7 @@ class RatingGournalItem extends Component {
     super(props);
     this.state = {
       rating: props.rating,
+      recived: props.recived
     }
     this.onChangeRating = this.onChangeRating.bind(this);
   }
@@ -78,7 +79,7 @@ class RatingGournalItem extends Component {
           <div className="journal-item__calc-value">
             {Number(rating.outclassWork).toFixed(2)}
           </div>
-          <div className="journal-item__calc-value">
+          <div className="journal-item__calc-value calc-value__total">
             {Number(rating.total).toFixed(2)}
           </div>
         </div>

@@ -13,7 +13,7 @@ class RatingJournal extends Component {
         <ol className="rating-journal__class-list">
           {students.inSelectedGroup.map(student => (
             <RatingJournalItem
-              key={student.student.guid}
+              key={student.hash}
               student={student.student}
               rating={student.rating}
             />

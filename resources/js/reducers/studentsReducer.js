@@ -1,6 +1,7 @@
 import { ACTIONS_NAMES } from '../actions';
 import Student from '../structures/Student';
 import Rating from '../structures/Rating';
+import hash from 'object-hash';
 
 const baseState = {
   selected: undefined,
@@ -28,8 +29,9 @@ const studentsReducer = (state = baseState, action) => {
             st.without_delay_count,
             st.evaluation_count,
             st.outclass_work_count,
-            st.lost_hours)
-          })
+            st.lost_hours),
+          hash: hash(st)
+          }),
         )
       };
     default:

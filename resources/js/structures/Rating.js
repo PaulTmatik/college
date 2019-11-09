@@ -8,13 +8,13 @@ class Rating {
     outclass,
     lost_hours
   ) {
-    this.avg_eval = avg_eval;
-    this.avg_test = avg_test;
-    this.visit_count = visit_count;
-    this.without_delay = without_delay;
-    this.eval_count = eval_count;
-    this.outclass = outclass;
-    this.lost_hours = lost_hours;
+    this.avg_eval = Number(avg_eval);
+    this.avg_test = Number(avg_test);
+    this.visit_count = Number(visit_count);
+    this.without_delay = Number(without_delay);
+    this.eval_count = Number(eval_count);
+    this.outclass = Number(outclass);
+    this.lost_hours = Number(lost_hours);
   }
 
   get evaluation() {

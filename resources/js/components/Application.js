@@ -7,7 +7,6 @@ import store from '../store';
 
 import Pages from './Pages';
 
-
 class Application extends Component {
   render() {
     return (
@@ -19,10 +18,6 @@ class Application extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  auth: state.auth
-});
 
 if (document.getElementById('application')) {
   ReactDOM.render(<Provider store={store}><Application/></Provider>, document.getElementById('application'));
