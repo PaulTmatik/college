@@ -1,7 +1,12 @@
 .rating-journal__item {
   display: flex;
+  margin-right: 1rem;
   padding: 0.3rem;
   position: relative;
+}
+
+.rating-journal__item:hover {
+  background-color: #eee;
 }
 
 .journal-item__student {
@@ -27,15 +32,29 @@
 .journal-item__input {
   background-color: transparent;
   border: none;
+  border-bottom: 1px dotted #999;
+  color: #999;
   font-size: inherit;
   font-family: inherit;
   margin: 0;
   padding: 0;
+  position: relative;
   text-align: right;
+  transform: translateY(1px);
   width: 4ch;
+}
+
+.journal-item__input:focus {
+  border-bottom-color: #1a73e8;
+  color: #1a73e8;
 }
 
 .journal-item__calc-value {
   text-align: right;
+  margin: 0 .2em;
   width: 6ch;
+}
+
+.calc-value__total {
+  font-weight: 600;
 }
