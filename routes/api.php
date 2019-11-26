@@ -108,6 +108,26 @@ Route::middleware('jwt.auth')->group(function () {
         'lhGuid' => '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$',
         'gGuid' => '^[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}$',
     ]);
+
+    Route::put('/journal/{journalGuid}/student/{studentGuid}', function(Request $request, string $journalGuid, string $studentGuid) {
+        $maper = [
+            'avg_eval' => 'avg_evaluation',
+            'avg_test' => 'avg_test_evaluation',
+            'visit_count' => 'visit_count',
+            'without_delay' => 'without_delay_count',
+            'eval_count' => 'evaluation_count',
+            'outclass' => 'outclass_work_count'
+        ];
+        $valueType = $request->input('field');
+        $value = $request->input('value');
+
+        DB::table('organization.ratings')
+            ->updateOrInsert([
+                'lh_guid' => $journalGuid,
+                's_guid'  => $studentGuid,
+            ], [$maper[$valueType] => $value]
+        );
+    });
 });
 
 function splitFullName($rawName) {

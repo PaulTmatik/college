@@ -18,6 +18,15 @@ export const getJournalsByLesson = (lessonGuid, groupGuid) => {
   }
 }
 
+export const setEvaluation = (journalGuid, studentGuid, fieldType, value) => {
+  return dispatch => {
+    return window.axios.put(`/api/journal/${journalGuid}/student/${studentGuid}`, {field: fieldType, value})
+      .then(response => response.data)
+      .then(data => dispatch(reciveSetEvaluation(data)))
+      .catch(error => console.error('Set Evaluation', error));
+  }
+}
+
 export const reciveGroupsByTeacher = data => {
   return {
     type: ACTIONS_NAMES.LESSON_GET_BY_GROUPS_FOR_TEACHER,
@@ -45,5 +54,12 @@ export const setCurrentJournal = journal => {
   return {
     type: ACTIONS_NAMES.LESSON_SET_CURRENT_JOURNAL,
     currentJournal: journal,
+  }
+}
+
+export const reciveSetEvaluation = data => {
+  return {
+    type: ACTIONS_NAMES.LESSON_SET_EVALUATION,
+    recivedAt: Date.now()
   }
 }

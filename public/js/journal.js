@@ -51537,7 +51537,7 @@ var setFirstGroup = function setFirstGroup(groupGuid) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveGroupsByTeacher, setFirstGroup, getStudentsInGroup, reciveStudentsInGroup, getStudnetsInJournalByGroup, reciveStudnetsInJournalByGroup, getUsersEmployees, checkAuthorization, authorize, logOut, reciveUsersEmployees, reciveAuthorizeUser, selectEmployeeByGuid, getUsedPeriodByUser, reciveUsedPeriods, getLessonsByGroupForTeacher, getJournalsByLesson, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal, ACTIONS_NAMES */
+/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveGroupsByTeacher, setFirstGroup, getStudentsInGroup, reciveStudentsInGroup, getStudnetsInJournalByGroup, reciveStudnetsInJournalByGroup, getUsersEmployees, checkAuthorization, authorize, logOut, reciveUsersEmployees, reciveAuthorizeUser, selectEmployeeByGuid, getUsedPeriodByUser, reciveUsedPeriods, getLessonsByGroupForTeacher, getJournalsByLesson, setEvaluation, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal, reciveSetEvaluation, ACTIONS_NAMES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51588,11 +51588,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getJournalsByLesson", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["getJournalsByLesson"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setEvaluation", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["setEvaluation"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reciveJournalsByLesson", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["reciveJournalsByLesson"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setCurrentLesson", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["setCurrentLesson"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setCurrentJournal", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["setCurrentJournal"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reciveSetEvaluation", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["reciveSetEvaluation"]; });
 
 
 
@@ -51614,7 +51618,8 @@ var ACTIONS_NAMES = {
   LESSON_GET_BY_GROUPS_FOR_TEACHER: 'LESSON_GET_BY_GROUPS_FOR_TEACHER',
   LESSON_SET_CURRENT: 'LESSON_SET_CURRENT',
   LESSON_GET_JOURNAL_BY_LESSON: 'LESSON_GET_JOURNAL_BY_LESSON',
-  LESSON_SET_CURRENT_JOURNAL: 'LESSON_SET_CURRENT_JOURNAL'
+  LESSON_SET_CURRENT_JOURNAL: 'LESSON_SET_CURRENT_JOURNAL',
+  LESSON_SET_EVALUATION: 'LESSON_SET_EVALUATION'
 };
 
 /***/ }),
@@ -51623,17 +51628,19 @@ var ACTIONS_NAMES = {
 /*!************************************************!*\
   !*** ./resources/js/actions/lessonsActions.js ***!
   \************************************************/
-/*! exports provided: getLessonsByGroupForTeacher, getJournalsByLesson, reciveGroupsByTeacher, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal */
+/*! exports provided: getLessonsByGroupForTeacher, getJournalsByLesson, setEvaluation, reciveGroupsByTeacher, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal, reciveSetEvaluation */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLessonsByGroupForTeacher", function() { return getLessonsByGroupForTeacher; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getJournalsByLesson", function() { return getJournalsByLesson; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setEvaluation", function() { return setEvaluation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveGroupsByTeacher", function() { return reciveGroupsByTeacher; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveJournalsByLesson", function() { return reciveJournalsByLesson; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCurrentLesson", function() { return setCurrentLesson; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCurrentJournal", function() { return setCurrentJournal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveSetEvaluation", function() { return reciveSetEvaluation; });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./resources/js/actions/index.js");
 
 var getLessonsByGroupForTeacher = function getLessonsByGroupForTeacher(groupGuid, teacherGuid) {
@@ -51655,6 +51662,20 @@ var getJournalsByLesson = function getJournalsByLesson(lessonGuid, groupGuid) {
       return dispatch(reciveJournalsByLesson(data));
     })["catch"](function (error) {
       return console.error('Get Journal By Lessons', error);
+    });
+  };
+};
+var setEvaluation = function setEvaluation(journalGuid, studentGuid, fieldType, value) {
+  return function (dispatch) {
+    return window.axios.put("/api/journal/".concat(journalGuid, "/student/").concat(studentGuid), {
+      field: fieldType,
+      value: value
+    }).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      return dispatch(reciveSetEvaluation(data));
+    })["catch"](function (error) {
+      return console.error('Set Evaluation', error);
     });
   };
 };
@@ -51682,6 +51703,12 @@ var setCurrentJournal = function setCurrentJournal(journal) {
   return {
     type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_SET_CURRENT_JOURNAL,
     currentJournal: journal
+  };
+};
+var reciveSetEvaluation = function reciveSetEvaluation(data) {
+  return {
+    type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_SET_EVALUATION,
+    recivedAt: Date.now()
   };
 };
 
@@ -52531,6 +52558,7 @@ function (_Component) {
     };
     var dispatch = props.dispatch;
     dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_3__["getUsersEmployees"])());
+    _this.pwdFocus = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.onChangePassword = _this.onChangePassword.bind(_assertThisInitialized(_this));
     _this.onSelectEmployee = _this.onSelectEmployee.bind(_assertThisInitialized(_this));
     _this.onAuthenticate = _this.onAuthenticate.bind(_assertThisInitialized(_this));
@@ -52538,6 +52566,11 @@ function (_Component) {
   }
 
   _createClass(PageLogin, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.pwdFocus.current.focus();
+    }
+  }, {
     key: "render",
     value: function render() {
       var _ref = this.props.location.state || {
@@ -52588,7 +52621,7 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "styled_input"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        autoFocus: true,
+        ref: this.pwdFocus,
         type: "password",
         id: "current_input",
         className: "styled_input__input",
@@ -52857,8 +52890,10 @@ var mapStateToProps = function mapStateToProps(state) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _css_rating_journal_item_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../css/rating-journal-item.css */ "./resources/css/rating-journal-item.css");
-/* harmony import */ var _css_rating_journal_item_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_rating_journal_item_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./resources/js/actions/index.js");
+/* harmony import */ var _css_rating_journal_item_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../css/rating-journal-item.css */ "./resources/css/rating-journal-item.css");
+/* harmony import */ var _css_rating_journal_item_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_rating_journal_item_css__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52876,6 +52911,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -52902,6 +52939,8 @@ function (_Component) {
   _createClass(RatingGournalItem, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var student = this.props.student;
       var rating = this.state.rating;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -52913,7 +52952,9 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "journal-item__input",
-        onChange: this.onChangeRating,
+        onChange: function onChange(e) {
+          return _this2.onChangeRating(e, student.guid);
+        },
         value: rating.avg_eval,
         "data-type": "avg_eval"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -52921,7 +52962,9 @@ function (_Component) {
       }, Number(rating.evaluation).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "journal-item__input",
-        onChange: this.onChangeRating,
+        onChange: function onChange(e) {
+          return _this2.onChangeRating(e, student.guid);
+        },
         value: rating.avg_test,
         "data-type": "avg_test"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -52929,7 +52972,9 @@ function (_Component) {
       }, Number(rating.testEvaluation).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "journal-item__input",
-        onChange: this.onChangeRating,
+        onChange: function onChange(e) {
+          return _this2.onChangeRating(e, student.guid);
+        },
         value: rating.visit_count,
         "data-type": "visit_count"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -52937,7 +52982,9 @@ function (_Component) {
       }, Number(rating.visited).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "journal-item__input",
-        onChange: this.onChangeRating,
+        onChange: function onChange(e) {
+          return _this2.onChangeRating(e, student.guid);
+        },
         value: rating.without_delay,
         "data-type": "without_delay"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -52945,7 +52992,9 @@ function (_Component) {
       }, Number(rating.withoutDelayed).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "journal-item__input",
-        onChange: this.onChangeRating,
+        onChange: function onChange(e) {
+          return _this2.onChangeRating(e, student.guid);
+        },
         value: rating.eval_count,
         "data-type": "eval_count"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -52953,7 +53002,9 @@ function (_Component) {
       }, Number(rating.evaluationStats).toFixed(2)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "journal-item__input",
-        onChange: this.onChangeRating,
+        onChange: function onChange(e) {
+          return _this2.onChangeRating(e, student.guid);
+        },
         value: rating.outclass,
         "data-type": "outclass"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -52964,19 +53015,29 @@ function (_Component) {
     }
   }, {
     key: "onChangeRating",
-    value: function onChangeRating(e) {
+    value: function onChangeRating(e, studentGuid) {
       var rating = this.state.rating;
+      var _this$props = this.props,
+          lessons = _this$props.lessons,
+          dispatch = _this$props.dispatch;
       rating[e.target.dataset.type] = e.target.value;
       this.setState({
         rating: rating
       });
+      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_2__["setEvaluation"])(lessons.selectedJournal.lh_guid, studentGuid, e.target.dataset.type, Number(e.target.value)));
     }
   }]);
 
   return RatingGournalItem;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (RatingGournalItem);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    lessons: state.lessons
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(RatingGournalItem));
 
 /***/ }),
 

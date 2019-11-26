@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import {setEvaluation} from '../actions';
+
 import "../../css/rating-journal-item.css";
 
 class RatingGournalItem extends Component {
@@ -22,7 +26,7 @@ class RatingGournalItem extends Component {
           <input
             type="text"
             className="journal-item__input"
-            onChange={this.onChangeRating}
+            onChange={e => this.onChangeRating(e, student.guid)}
             value={rating.avg_eval}
             data-type="avg_eval"
           />
@@ -32,7 +36,7 @@ class RatingGournalItem extends Component {
           <input
             type="text"
             className="journal-item__input"
-            onChange={this.onChangeRating}
+            onChange={e => this.onChangeRating(e, student.guid)}
             value={rating.avg_test}
             data-type="avg_test"
           />
@@ -42,7 +46,7 @@ class RatingGournalItem extends Component {
           <input
             type="text"
             className="journal-item__input"
-            onChange={this.onChangeRating}
+            onChange={e => this.onChangeRating(e, student.guid)}
             value={rating.visit_count}
             data-type="visit_count"
           />
@@ -52,7 +56,7 @@ class RatingGournalItem extends Component {
           <input
             type="text"
             className="journal-item__input"
-            onChange={this.onChangeRating}
+            onChange={e => this.onChangeRating(e, student.guid)}
             value={rating.without_delay}
             data-type="without_delay"
           />
@@ -62,7 +66,7 @@ class RatingGournalItem extends Component {
           <input
             type="text"
             className="journal-item__input"
-            onChange={this.onChangeRating}
+            onChange={e => this.onChangeRating(e, student.guid)}
             value={rating.eval_count}
             data-type="eval_count"
           />
@@ -72,7 +76,7 @@ class RatingGournalItem extends Component {
           <input
             type="text"
             className="journal-item__input"
-            onChange={this.onChangeRating}
+            onChange={e => this.onChangeRating(e, student.guid)}
             value={rating.outclass}
             data-type="outclass"
           />
@@ -87,11 +91,21 @@ class RatingGournalItem extends Component {
     );
   }
 
-  onChangeRating(e) {
+  onChangeRating(e, studentGuid) {
     const { rating } = this.state;
+    const { lessons, dispatch} = this.props;
     rating[e.target.dataset.type] = e.target.value;
     this.setState({rating: rating});
+    dispatch(setEvaluation(
+      lessons.selectedJournal.lh_guid, 
+      studentGuid, 
+      e.target.dataset.type, 
+      Number(e.target.value)));
   }
 }
 
-export default RatingGournalItem;
+const mapStateToProps = state => ({
+  lessons: state.lessons
+});
+
+export default connect(mapStateToProps)(RatingGournalItem);

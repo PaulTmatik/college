@@ -22,9 +22,15 @@ class PageLogin extends Component {
     const { dispatch } = props;
     dispatch(getUsersEmployees());
 
+    this.pwdFocus = React.createRef();
+
     this.onChangePassword = this.onChangePassword.bind(this);
     this.onSelectEmployee = this.onSelectEmployee.bind(this);
     this.onAuthenticate = this.onAuthenticate.bind(this);
+  }
+
+  componentDidMount() {
+    this.pwdFocus.current.focus();
   }
 
   render() {
@@ -77,7 +83,7 @@ class PageLogin extends Component {
         />
         <div className="styled_input">
           <input
-            autoFocus
+            ref={this.pwdFocus}
             type="password"
             id="current_input"
             className="styled_input__input"
