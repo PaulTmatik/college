@@ -27,6 +27,15 @@ export const setEvaluation = (journalGuid, studentGuid, fieldType, value) => {
   }
 }
 
+export const saveNewJournal = (lessonGuid, forDate, lostHours) => {
+  return dispatch => {
+    return window.asios.post(`/api/journal/new/from/${forDate}/`, {lGuid: lessonGuid, lostHours})
+      .then(response => response.data)
+      .then(data => dispatch(reciveSaveNewJournal(data)))
+      .catch(error => console.error('Save new journal', error));
+  }
+}
+
 export const reciveGroupsByTeacher = data => {
   return {
     type: ACTIONS_NAMES.LESSON_GET_BY_GROUPS_FOR_TEACHER,
@@ -60,6 +69,14 @@ export const setCurrentJournal = journal => {
 export const reciveSetEvaluation = data => {
   return {
     type: ACTIONS_NAMES.LESSON_SET_EVALUATION,
+    recivedAt: Date.now()
+  }
+}
+
+export const reciveSaveNewJournal = data => {
+  return {
+    type: ACTIONS_NAMES.LESSON_NEW_JOURNAL,
+    journal: data,
     recivedAt: Date.now()
   }
 }

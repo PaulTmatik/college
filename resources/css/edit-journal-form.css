@@ -31,3 +31,7 @@
 .edit-journal__hours-input {
   width: 4.2rem;
 }
+
+.edit-journal--whide {
+  flex-grow: 1;
+}

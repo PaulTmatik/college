@@ -17,20 +17,7 @@ class EditJournalForm extends Component {
         <div className="edit-journal__components-group">
           <h2 className="edit-journal__title">Новый журнал</h2>
           <div className="edit-journal__input-group">
-            <div className="styled_input">
-              <input
-                id="edit-gournal-begin-date"
-                type="date"
-                className="styled_input__input"
-              />
-              <label
-                htmlFor="edit-gournal-begin-date"
-                className="styled_input__label"
-              >
-                Начало
-              </label>
-            </div> –
-            <div className="styled_input">
+            <div className="styled_input edit-journal--whide">
               <input
                 id="edit-gournal-end-date"
                 type="date"
@@ -40,7 +27,7 @@ class EditJournalForm extends Component {
                 htmlFor="edit-gournal-end-date"
                 className="styled_input__label"
               >
-                Окончание
+                Дата отчёта
               </label>
             </div>
           </div>

@@ -2032,7 +2032,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, ".edit-journal__form {\r\n  align-items: center;\r\n  display: flex;\r\n  flex-direction: column;\r\n  flex-grow: 1;\r\n}\r\n\r\n.edit-journal__input-group {\r\n  align-items: center;\r\n  display: flex;\r\n}\r\n\r\n.edit-journal__input-group:last-child {\r\n  margin-top: 1rem;\r\n}\r\n\r\n.edit-journal--right {\r\n  justify-content: flex-end;\r\n}\r\n\r\n.edit-journal__input-group\r\n.button {\r\n  margin-right: 1rem;\r\n}\r\n\r\n.edit-journal__hours-label {\r\n  flex-grow: 1;\r\n  margin-left: 1rem;\r\n}\r\n\r\n.edit-journal__hours-input {\r\n  width: 4.2rem;\r\n}", ""]);
+exports.push([module.i, ".edit-journal__form {\r\n  align-items: center;\r\n  display: flex;\r\n  flex-direction: column;\r\n  flex-grow: 1;\r\n}\r\n\r\n.edit-journal__input-group {\r\n  align-items: center;\r\n  display: flex;\r\n}\r\n\r\n.edit-journal__input-group:last-child {\r\n  margin-top: 1rem;\r\n}\r\n\r\n.edit-journal--right {\r\n  justify-content: flex-end;\r\n}\r\n\r\n.edit-journal__input-group\r\n.button {\r\n  margin-right: 1rem;\r\n}\r\n\r\n.edit-journal__hours-label {\r\n  flex-grow: 1;\r\n  margin-left: 1rem;\r\n}\r\n\r\n.edit-journal__hours-input {\r\n  width: 4.2rem;\r\n}\r\n\r\n.edit-journal--whide {\r\n  flex-grow: 1;\r\n}", ""]);
 
 // exports
 
@@ -51537,7 +51537,7 @@ var setFirstGroup = function setFirstGroup(groupGuid) {
 /*!***************************************!*\
   !*** ./resources/js/actions/index.js ***!
   \***************************************/
-/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveGroupsByTeacher, setFirstGroup, getStudentsInGroup, reciveStudentsInGroup, getStudnetsInJournalByGroup, reciveStudnetsInJournalByGroup, getUsersEmployees, checkAuthorization, authorize, logOut, reciveUsersEmployees, reciveAuthorizeUser, selectEmployeeByGuid, getUsedPeriodByUser, reciveUsedPeriods, getLessonsByGroupForTeacher, getJournalsByLesson, setEvaluation, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal, reciveSetEvaluation, ACTIONS_NAMES */
+/*! exports provided: GetGroupsOnPeriod, getGroupsByTeacher, setGroupLesson, reciveGroupsByTeacher, setFirstGroup, getStudentsInGroup, reciveStudentsInGroup, getStudnetsInJournalByGroup, reciveStudnetsInJournalByGroup, getUsersEmployees, checkAuthorization, authorize, logOut, reciveUsersEmployees, reciveAuthorizeUser, selectEmployeeByGuid, getUsedPeriodByUser, reciveUsedPeriods, getLessonsByGroupForTeacher, getJournalsByLesson, setEvaluation, saveNewJournal, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal, reciveSetEvaluation, reciveSaveNewJournal, ACTIONS_NAMES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51590,6 +51590,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setEvaluation", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["setEvaluation"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "saveNewJournal", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["saveNewJournal"]; });
+
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reciveJournalsByLesson", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["reciveJournalsByLesson"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setCurrentLesson", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["setCurrentLesson"]; });
@@ -51597,6 +51599,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setCurrentJournal", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["setCurrentJournal"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reciveSetEvaluation", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["reciveSetEvaluation"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "reciveSaveNewJournal", function() { return _lessonsActions__WEBPACK_IMPORTED_MODULE_4__["reciveSaveNewJournal"]; });
 
 
 
@@ -51618,6 +51622,7 @@ var ACTIONS_NAMES = {
   LESSON_GET_BY_GROUPS_FOR_TEACHER: 'LESSON_GET_BY_GROUPS_FOR_TEACHER',
   LESSON_SET_CURRENT: 'LESSON_SET_CURRENT',
   LESSON_GET_JOURNAL_BY_LESSON: 'LESSON_GET_JOURNAL_BY_LESSON',
+  LESSON_NEW_JOURNAL: 'LESSON_NEW_JOURNAL',
   LESSON_SET_CURRENT_JOURNAL: 'LESSON_SET_CURRENT_JOURNAL',
   LESSON_SET_EVALUATION: 'LESSON_SET_EVALUATION'
 };
@@ -51628,7 +51633,7 @@ var ACTIONS_NAMES = {
 /*!************************************************!*\
   !*** ./resources/js/actions/lessonsActions.js ***!
   \************************************************/
-/*! exports provided: getLessonsByGroupForTeacher, getJournalsByLesson, setEvaluation, reciveGroupsByTeacher, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal, reciveSetEvaluation */
+/*! exports provided: getLessonsByGroupForTeacher, getJournalsByLesson, setEvaluation, saveNewJournal, reciveGroupsByTeacher, reciveJournalsByLesson, setCurrentLesson, setCurrentJournal, reciveSetEvaluation, reciveSaveNewJournal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51636,11 +51641,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLessonsByGroupForTeacher", function() { return getLessonsByGroupForTeacher; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getJournalsByLesson", function() { return getJournalsByLesson; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setEvaluation", function() { return setEvaluation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveNewJournal", function() { return saveNewJournal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveGroupsByTeacher", function() { return reciveGroupsByTeacher; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveJournalsByLesson", function() { return reciveJournalsByLesson; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCurrentLesson", function() { return setCurrentLesson; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCurrentJournal", function() { return setCurrentJournal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveSetEvaluation", function() { return reciveSetEvaluation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reciveSaveNewJournal", function() { return reciveSaveNewJournal; });
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! . */ "./resources/js/actions/index.js");
 
 var getLessonsByGroupForTeacher = function getLessonsByGroupForTeacher(groupGuid, teacherGuid) {
@@ -51679,6 +51686,20 @@ var setEvaluation = function setEvaluation(journalGuid, studentGuid, fieldType, 
     });
   };
 };
+var saveNewJournal = function saveNewJournal(lessonGuid, forDate, lostHours) {
+  return function (dispatch) {
+    return window.asios.post("/api/journal/new/from/".concat(forDate, "/"), {
+      lGuid: lessonGuid,
+      lostHours: lostHours
+    }).then(function (response) {
+      return response.data;
+    }).then(function (data) {
+      return dispatch(reciveSaveNewJournal(data));
+    })["catch"](function (error) {
+      return console.error('Save new journal', error);
+    });
+  };
+};
 var reciveGroupsByTeacher = function reciveGroupsByTeacher(data) {
   return {
     type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_GET_BY_GROUPS_FOR_TEACHER,
@@ -51708,6 +51729,13 @@ var setCurrentJournal = function setCurrentJournal(journal) {
 var reciveSetEvaluation = function reciveSetEvaluation(data) {
   return {
     type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_SET_EVALUATION,
+    recivedAt: Date.now()
+  };
+};
+var reciveSaveNewJournal = function reciveSaveNewJournal(data) {
+  return {
+    type: ___WEBPACK_IMPORTED_MODULE_0__["ACTIONS_NAMES"].LESSON_NEW_JOURNAL,
+    journal: data,
     recivedAt: Date.now()
   };
 };
@@ -52190,16 +52218,7 @@ function (_Component) {
       }, "\u041D\u043E\u0432\u044B\u0439 \u0436\u0443\u0440\u043D\u0430\u043B"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-journal__input-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "styled_input"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "edit-gournal-begin-date",
-        type: "date",
-        className: "styled_input__input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "edit-gournal-begin-date",
-        className: "styled_input__label"
-      }, "\u041D\u0430\u0447\u0430\u043B\u043E")), " \u2013", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "styled_input"
+        className: "styled_input edit-journal--whide"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "edit-gournal-end-date",
         type: "date",
@@ -52207,7 +52226,7 @@ function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "edit-gournal-end-date",
         className: "styled_input__label"
-      }, "\u041E\u043A\u043E\u043D\u0447\u0430\u043D\u0438\u0435"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "\u0414\u0430\u0442\u0430 \u043E\u0442\u0447\u0451\u0442\u0430"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "edit-journal__input-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "edit-journal-hours-count-lbl",
